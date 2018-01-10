@@ -1,8 +1,9 @@
-var css = require('sheetify')
-var choo = require('choo')
-var store = require('./stores/clicks')
+const css = require('sheetify')
+const choo = require('choo')
+const store = require('./stores/store')
+const routes = require('./routes/index')
 
-css('tachyons')
+css('./styles/index.css')
 
 var app = choo()
 if (process.env.NODE_ENV !== 'production') {
@@ -14,9 +15,13 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.use(store)
+app.use(mapRoutes)
 
-app.route('/', require('./views/main'))
-app.route('/*', require('./views/404'))
+// create the site structure
+function mapRoutes (state, emitter) {
+  state.routes = routes
+  state.routes.map(r => app.route(r.path, r.component))
+}
 
 if (!module.parent) app.mount('body')
 else module.exports = app
