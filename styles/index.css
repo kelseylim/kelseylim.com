@@ -4,15 +4,48 @@ html, body {
   font-family: 'Arial', sans-serif;
   font-size: 1rem;
   background-color: black;
-  color: white; }
+  color: white;
+  height: 100vh;
+  transform: scale(0.3);
+  border: 1px solid red; }
 
 a {
   color: white;
   text-decoration: none; }
 
 #scrollContainer {
-  height: 100vh;
-  width: 100vw; }
+  position: fixed;
+  height: 300vh;
+  top: -100vh;
+  width: 100vw;
+  background-color: purple; }
 
 section {
-  height: 25vh; }
+  height: 100vh; }
+
+section#projects {
+  background-color: green; }
+
+section#about {
+  background-color: blue; }
+
+.pinTop {
+  transform: 0px; }
+
+.pinCenter {
+  transform: 100vh; }
+
+.pinBottom {
+  transform: 200vh; }
+
+.moveUp {
+  transform: 0px;
+  transition: 500ms; }
+
+.moveCenter {
+  transform: 100vh;
+  transition: 500ms; }
+
+.moveDown {
+  transform: 200vh;
+  transition: 500ms; }

@@ -1,37 +1,49 @@
-const Hammer = require('hammerjs')
-
-module.exports = store
-
-
 
 function store (state, emitter) {
-  state.sectionOrder = ['PROJECTS', 'BIO']
+  state.sections = ['ABOUT', 'PROJECTS', 'ABOUT']
+  state.latch = false
 
-  function tupleSwap(arr) {
-    const revArr = [arr[1], arr[0]]
-    console.log(arr, revArr)
-    return revArr
+  function swapTuple(arr) {
+    return [arr[1], arr[0]]
   }
 
+  function ifFirstItemIs(arr, key) {
+    return arr[0] === key ? true : false
+  }
+
+  function invertTuple (arr) {
+    const newArr = [arr[1], arr[2]]
+    return newArr.concat(newArr[0])
+  }
+
+  emitter.on('DOMContentLoaded', DOMContentLoaded)
+  emitter.on('shiftUp', shiftUp)
+  emitter.on('shiftDown', shiftDown)
+  emitter.on('latchOff', latchOff)
+  emitter.on('latchOn', latchOn)
+
+
   function shiftUp () {
-    console.log()
-    // state.sectionOrder = tupleSwap(state.sectionOrder)
-    state.sectionOrder = ['PROJECTS', 'BIO']
+    state.sections = invertTuple(state.sections)
     emitter.emit('render')
   }
 
   function shiftDown () {
-    // state.sectionOrder = tupleSwap(state.sectionOrder)
-    state.sectionOrder = ['BIO', 'PROJECTS']
+    state.sections = invertTuple(state.sections)
     emitter.emit('render')
   }
 
-  emitter.on('DOMContentLoaded', function () {
-    // const scrollContainer = document.getElementById('scrollContainer')
-    // const hammertime = new Hammer(scrollContainer)
-    // hammertime.on('pan', function(ev) {
-    // 	console.log(ev)
-    // })
-  })
-  // emitter.on('handleScroll', handleScroll)
+  function latchOn () {
+    state.latch = true
+  }
+
+  function latchOff () {
+    state.latch = false
+  }
+
+  function DOMContentLoaded () {
+    return null
+  }
 }
+
+module.exports = store

@@ -1,3 +1,5 @@
+$transitionTime: 500ms;
+
 html, body {
   margin: 0;
   padding: 0;
@@ -5,6 +7,11 @@ html, body {
   font-size: 1rem;
   background-color: black;
   color: white;
+  height: 100vh;
+  // overflow: hidden;
+  transform: scale(0.3);
+  border: 1px solid red;
+
 }
 
 a {
@@ -17,11 +24,50 @@ h1 {
 }
 
 #scrollContainer{
-  height: 100vh;
+  position: fixed;
+  height: 300vh;
+  top: -100vh;
   width: 100vw;
+
+  background-color: purple;
   // overflow: none;
 }
 
 section{
-  height: 25vh;
+  height: 100vh;
+  &#projects {
+    background-color: green;
+  }
+  &#about {
+    background-color: blue;
+  }
+}
+
+// instant pin
+.pinTop {
+  transform: 0px;
+}
+
+.pinCenter {
+  transform: 100vh;
+}
+
+.pinBottom {
+  transform: 200vh;
+}
+
+// move
+.moveUp {
+  transform: 0px;
+  transition: $transitionTime;
+}
+
+.moveCenter {
+  transform: 100vh;
+  transition: $transitionTime;
+}
+
+.moveDown {
+  transform: 200vh;
+  transition: $transitionTime;
 }

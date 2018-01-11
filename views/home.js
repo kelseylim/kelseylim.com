@@ -1,15 +1,17 @@
-var html = require('choo/html')
-var wrapper = require('../components/wrapper')
+const html = require('choo/html')
+const wrapper = require('../components/wrapper')
+const lodash = require('lodash')
+const Hammer = require('hammerjs')
+const { projects, about } = require('./sections')
 
 var TITLE = 'Kelsey Lim'
-const scrollThreshhold = 40
-
+const scrollThreshold = 30
+const transitionTime = 800
 
 module.exports = wrapper(view)
 
 function view (state, emit) {
-  const slides = state.sectionOrder.map(k => k === 'PROJECTS' ? projects() : about())
-  console.log(state.sectionOrder)
+  const slides = state.sections.map(key => key === 'PROJECTS' ? projects() : about())
   return html`
     <div id="scrollContainer" onwheel=${handleScroll}>
       ${slides}
@@ -17,19 +19,16 @@ function view (state, emit) {
   `
 
   function handleScroll(event) {
-    event.deltaY > 0 + scrollThreshhold ? emit('shiftUp') : null
-    event.deltaY < 0 - scrollThreshhold ? emit('shiftDown') : null
+    event.preventDefault()
+    if (!state.latch) {
+      emit('latchOn')
+      event.wheelDeltaY > 0 + scrollThreshold ? emit('shiftUp') : null
+      event.wheelDeltaY < 0 - scrollThreshold ? emit('shiftDown') : null
+      window.setTimeout(resetLatch, transitionTime)
+    }
   }
-}
 
-function projects (state, emit) {
-  return html`
-    <section>projects</section>
-  `
-}
-
-function about (state, emit) {
-  return html`
-    <section>about</section>
-  `
+  function resetLatch() {
+    emit('latchOff')
+  }
 }
