@@ -1,7 +1,7 @@
 const me = {
   name: 'Kelsey Lim',
   links: {
-    email: 'gavin@gav.space',
+    email: 'kelsey@lim.com',
   },
   bio: '',
 }

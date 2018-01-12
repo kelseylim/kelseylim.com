@@ -1,3 +1,7 @@
+require('babel-register')({
+  plugins: ['markdown']
+});
+
 const css = require('sheetify')
 const choo = require('choo')
 const store = require('./stores/store')
@@ -8,10 +12,12 @@ css('./styles/index.css')
 var app = choo()
 if (process.env.NODE_ENV !== 'production') {
   app.use(require('choo-devtools')())
+  app.use(require('choo-service-worker')())
+
 } else {
   // Enable once you want service workers support. At the moment you'll
   // need to insert the file names yourself & bump the dep version by hand.
-  // app.use(require('choo-service-worker')())
+  app.use(require('choo-service-worker')())
 }
 
 app.use(store)

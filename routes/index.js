@@ -12,9 +12,6 @@ const homePage = {
   title: 'Kelsey Lim',
   key: 'ROUTE_HOME',
   component: homeComponent,
-  content: {
-    projects: projects,
-  },
 }
 
 const noMatchPage = {
@@ -23,8 +20,6 @@ const noMatchPage = {
   title: '404',
   key: 'ROUTE_NOMATCH',
   component: noMatchComponent,
-  content: {
-  },
 }
 
 const routes = [homePage, noMatchPage]

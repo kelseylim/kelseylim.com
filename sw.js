@@ -5,7 +5,7 @@ var URLS = [
   '/',
   '/bundle.css',
   '/bundle.js',
-  'assets/icon.png'
+  '/assets/images'
 ]
 
 // Respond with cached resources

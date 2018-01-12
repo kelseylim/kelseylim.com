@@ -15,6 +15,8 @@
     "test-deps": "dependency-check . && dependency-check . --extra --no-dev -i tachyons"
   },
   "dependencies": {
+    "babel-plugin-markdown": "^0.3.0",
+    "babel-register": "^6.26.0",
     "choo": "^6.6.0",
     "choo-devtools": "^2.1.0",
     "choo-service-worker": "^2.3.1",
@@ -23,6 +25,7 @@
     "jQuery": "^1.7.4",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
+    "marked": "^0.3.12",
     "npm-run-all": "^4.1.2",
     "slick-carousel": "^1.8.1"
   },
