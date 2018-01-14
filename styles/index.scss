@@ -37,6 +37,7 @@ a {
 
 h1 {
   font-size: 10vw;
+  line-height: 10vw;
   height: 10vw;
   padding: 0;
   margin: 0;
@@ -46,18 +47,18 @@ h1 {
   text-align: center;
   z-index: 999;
   &#top {
-    top: -2.55vw;
-    transform: translateY(-35%);
+    // top: -2.55vw;
+    top: 0.5vw;
+    transform: translateY(-5vw);
   }
 
   &#bottom {
     bottom: 0;
-    transform: translateY(35%);
+    transform: translateY(5vw);
   }
-
 }
 
-#scrollContainer{
+#scrollContainer {
   position: fixed;
   height: 300vh;
   top: -100vh;

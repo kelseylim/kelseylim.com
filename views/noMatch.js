@@ -1,7 +1,7 @@
 var html = require('choo/html')
 var wrapper = require('../components/wrapper')
 
-var TITLE = '🚂🚋🚋 - route not found'
+var TITLE = 'Kelsey Lim - 404'
 
 module.exports = wrapper(view)
 

@@ -7,9 +7,9 @@ function wrapper (view) {
     return html`
       <body>
         <div class='overlay ${loadClassNames}'></div>
-        <h1 id='top'>Kelsey Lim</h1>
+        <h1 id='top'>KELSEY LIM</h1>
         ${view(state, emit)}
-        <h1 id='bottom'>Kelsey Lim</h1>
+        <h1 id='bottom'>KELSEY LIM</h1>
       </body>
     `
   }

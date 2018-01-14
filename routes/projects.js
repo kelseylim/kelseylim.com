@@ -116,7 +116,26 @@ const projects = [
     src: 'kelsey-lim-google-yearinreview2015.png',
     cap: '**Google’s [TO GOOGLE](http://www.google.com) Popular Search Queries of 2015.** Illustration, Think with Google. Art Direction by Nicklesh Soni',
   },
-
+  {
+    src: 'kelsey-lim-google-yearinreview2015.png',
+    cap: '**Google’s [TO GOOGLE](http://www.google.com) Popular Search Queries of 2015.** Illustration, Think with Google. Art Direction by Nicklesh Soni',
+  },
+  {
+    src: 'kelsey-lim-google-yearinreview2015.png',
+    cap: '**Google’s [TO GOOGLE](http://www.google.com) Popular Search Queries of 2015.** Illustration, Think with Google. Art Direction by Nicklesh Soni',
+  },
+  {
+    src: 'kelsey-lim-google-yearinreview2015.png',
+    cap: 'Google’s [TO GOOGLE](http://www.google.com) Popular Search Queries of 2015. Illustration, Think with Google. Art Direction by Nicklesh Soni',
+  },
+  {
+    src: 'kelsey-lim-google-yearinreview2015.png',
+    cap: '**Google’s [TO GOOGLE](http://www.google.com) Popular Search Queries of 2015.** Illustration, Think with Google. Art Direction by Nicklesh Soni',
+  },
+  {
+    src: 'kelsey-lim-google-yearinreview2015.png',
+    cap: '**Google’s [TO GOOGLE](http://www.google.com) Popular Search Queries of 2015.** Illustration, Think with Google. Art Direction by Nicklesh Soni',
+  },
 
 
 ]
