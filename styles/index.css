@@ -44,11 +44,11 @@ section {
 
 .moveUp {
   transform: translateY(-100vh);
-  transition: 800ms; }
+  transition: 790ms; }
 
 .moveDown {
   transform: translateY(100vh);
-  transition: 800ms; }
+  transition: 790ms; }
 
 .reset {
   transform: translateY(0px);
