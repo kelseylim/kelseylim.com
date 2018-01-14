@@ -71,12 +71,14 @@ function store (state, emitter) {
 
   function loop () {
     if (state.currentSection === 'PROJECTS' && !state.isPaused) {
-      if (state.loopIndex < state.projectListLength - 1) {
-        state.loopIndex = state.loopIndex + 1
-      } else {
-        state.loopIndex = 0
-      }
-      emitter.emit('render')
+      window.requestAnimationFrame(() => {
+        if (state.loopIndex < state.projectListLength - 1) {
+          state.loopIndex = state.loopIndex + 1
+        } else {
+          state.loopIndex = 0
+        }
+        emitter.emit('render')
+      })
     }
   }
 
@@ -93,6 +95,7 @@ function store (state, emitter) {
   function DOMContentLoaded () {
     window.setInterval(() => loop(), 500)
     state.isLoading = false
+    emitter.emit('render')
   }
 }
 

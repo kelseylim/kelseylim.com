@@ -156,3 +156,23 @@ section {
 
 .hide {
   visibility: hidden; }
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  content: '';
+  background-color: black;
+  pointer-events: none;
+  transition: opacity 400ms;
+  opacity: 1; }
+
+.loadingOn {
+  opacity: 1; }
+
+.loadingOff {
+  opacity: 0;
+  z-index: 999; }

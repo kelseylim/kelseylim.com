@@ -40,8 +40,8 @@ function about (state, emit) {
 function slide (project, className, emit) {
   return html`
     <span class='slide ${className}'>
-      <div class='wrapper'>
-        <img onmouseenter=${handlePause} onmouseleave=${handlePlay} src='assets/images/${project.src}' />
+      <div class='slide-wrapper'>
+        <img class='slide-img' onmouseenter=${handlePause} onmouseleave=${handlePlay} src='assets/images/${project.src}' />
         ${ makeMarkdown(project.cap) }
       </div>
     </span>
