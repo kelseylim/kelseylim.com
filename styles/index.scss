@@ -1,4 +1,4 @@
-$transitionTime: 790ms;
+$transitionTime: 800ms;
 
 @mixin for-small-up {
   @media (min-width: 200px) { @content; }
