@@ -3,7 +3,6 @@ const homeComponent = require('../views/home')
 const noMatchComponent = require('../views/noMatch')
 
 // IMPORT CONTENT
-const me = require('./me.js')
 const projects = require('./projects.js')
 
 const homePage = {

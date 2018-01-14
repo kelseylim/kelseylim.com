@@ -8,7 +8,7 @@ renderer.link = function( href, title, text ) {
 
 const raw = require('bel/raw')
 const projectList = require('../routes/projects')
-const bio = markdown.require('../routes/bio.md')
+// const bio = markdown.require('../routes/bio.md')
 
 function projects (state, emit) {
   const projectListDOM = projectList.map((p, i) => {
