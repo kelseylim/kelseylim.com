@@ -1,12 +1,12 @@
 {
-  "name": "kelsey lim dot com",
-  "homepage": "https://kelseylim.github.io/kelseylim.choo/",
+  "name": "kelseylimdotcom",
+  "homepage":"https://kelseylim.github.io/kelseylim.choo/",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "build-bankai": "bankai build index.js",
     "build-css": "node-sass styles/ -o styles/",
-    "build": "npm-run-all -p build-css build-bankai && mv dist docs",
+    "build": "npm-run-all -p build-css build-bankai",
     "create": "choo-scaffold",
     "inspect": "bankai inspect index.js",
     "start": "npm-run-all -p watch-css start-bankai",
@@ -14,7 +14,7 @@
     "watch-css": "npm run build-css && node-sass styles/ -o styles/ --watch --recursive",
     "test": "standard && npm run test-deps",
     "test-deps": "dependency-check . && dependency-check . --extra --no-dev -i tachyons",
-    "deploy": "gh-pages -d build"
+    "deploy": "yarn build && gh-pages -d dist"
   },
   "dependencies": {
     "babel-plugin-markdown": "^0.3.0",
