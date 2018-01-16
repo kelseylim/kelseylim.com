@@ -1,14 +1,11 @@
 const html = require('choo/html')
-const wrapper = require('../components/wrapper')
 const Hammer = require('hammerjs')
 const { projects, about } = require('./sections')
 
 const scrollThreshold = 30
 const name = 'KELSEY LIM'
 
-module.exports = wrapper(view)
-
-function view (state, emit) {
+function home (state, emit) {
   if (state.currentSection === 'PROJECTS') emit(state.events.DOMTITLECHANGE, 'Kelsey Lim - Projects')
   if (state.currentSection === 'ABOUT') emit(state.events.DOMTITLECHANGE, 'Kelsey Lim - About')
 
@@ -35,3 +32,5 @@ function view (state, emit) {
     }
   }
 }
+
+module.exports = home

@@ -1,6 +1,5 @@
 {
   "name": "kelseylimdotcom",
-  "homepage":"https://kelseylim.github.io/kelseylim.choo/",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -28,12 +27,12 @@
   },
   "devDependencies": {
     "babel-plugin-markdown": "^0.3.0",
-    "bankai": "^9.0.0-rc9",
+    "bankai": "^9.2.0",
+    "choo-devtools": "^2.1.0",
     "choo-scaffold": "^1.1.2",
     "dependency-check": "^2.9.1",
-    "node-sass": "^4.7.2",
-    "standard": "^10.0.3",
     "gh-pages": "^1.1.0",
-    "choo-devtools": "^2.1.0"
+    "node-sass": "^4.7.2",
+    "standard": "^10.0.3"
   }
 }

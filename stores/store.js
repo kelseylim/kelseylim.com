@@ -111,7 +111,7 @@ function store (state, emitter) {
     }, 500)
   }
 
-  
+
 }
 
 module.exports = store

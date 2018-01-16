@@ -39,10 +39,11 @@ function about (state, emit) {
 
 function slide (project, className, state, emit) {
   const captionContainerClass = state.isPaused ? 'showCaption caption' : 'hideCaption caption'
+  const imageURL = 'assets/images/' + project.src
   return html`
     <span class='slide ${className}'>
       <div class='slide-wrapper'>
-        <img class='slide-img' onmouseenter=${handleSlideEnter} onmouseleave=${handleSlideExit} src='assets/images/${project.src}' />
+        ${image(imageURL, handleSlideEnter, handleSlideExit )}
         <div class=${captionContainerClass}>${ makeMarkdown(project.cap) }</div>
       </div>
     </span>
@@ -55,6 +56,16 @@ function slide (project, className, state, emit) {
   function handleSlideExit() {
     emit('handleSlideExit')
   }
+}
+
+function image(src, handleSlideEnter, handleSlideExit) {
+  return html`
+    <img
+      class='slide-img'
+      onmouseenter=${handleSlideEnter}
+      onmouseleave=${handleSlideExit}
+      src='${src}' />
+  `
 }
 
 function makeMarkdown (md) {
