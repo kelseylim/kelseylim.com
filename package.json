@@ -17,26 +17,23 @@
     "deploy": "yarn build && gh-pages -d dist"
   },
   "dependencies": {
-    "babel-plugin-markdown": "^0.3.0",
     "babel-register": "^6.26.0",
     "choo": "^6.6.0",
-    "choo-devtools": "^2.1.0",
     "choo-service-worker": "^2.3.1",
     "classnames": "^2.2.5",
-    "gh-pages": "^1.1.0",
     "hammerjs": "^2.0.8",
-    "jQuery": "^1.7.4",
-    "jquery": "^3.2.1",
     "lodash": "^4.17.4",
     "marked": "^0.3.12",
-    "npm-run-all": "^4.1.2",
-    "slick-carousel": "^1.8.1"
+    "npm-run-all": "^4.1.2"
   },
   "devDependencies": {
+    "babel-plugin-markdown": "^0.3.0",
     "bankai": "^9.0.0-rc9",
     "choo-scaffold": "^1.1.2",
     "dependency-check": "^2.9.1",
     "node-sass": "^4.7.2",
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "gh-pages": "^1.1.0",
+    "choo-devtools": "^2.1.0"
   }
 }

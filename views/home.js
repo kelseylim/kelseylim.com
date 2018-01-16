@@ -4,6 +4,7 @@ const Hammer = require('hammerjs')
 const { projects, about } = require('./sections')
 
 const scrollThreshold = 30
+const name = 'KELSEY LIM'
 
 module.exports = wrapper(view)
 
@@ -18,11 +19,11 @@ function view (state, emit) {
   return html`
     <body>
       <div class='overlay ${loadClassNames}'></div>
-      <h1 id='top'>KELSEY LIM</h1>
+      <h1 id='top'>${name}</h1>
       <div id="scrollContainer" class=${classNames} onwheel=${handleScroll}>
         ${slides}
       </div>
-      <h1 id='bottom'>KELSEY LIM</h1>
+      <h1 id='bottom'>${name}</h1>
     </body>
   `
 

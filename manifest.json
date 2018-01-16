@@ -1,11 +1,11 @@
 {
-  "name": "gav.choo",
-  "short_name": "gav.choo",
+  "name": "kelseylim.com",
+  "short_name": "kelseylim.com s",
   "description": "A very cute app",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffc0cb",
-  "theme_color": "#ffc0cb",
+  "background_color": "#000",
+  "theme_color": "#000",
   "icons": [{
     "src": "/assets/icon.png",
     "type": "image/png",
