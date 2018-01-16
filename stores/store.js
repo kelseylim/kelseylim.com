@@ -35,11 +35,22 @@ function store (state, emitter) {
     return arr.concat(newItem)
   }
 
+  function pause () {
+    state.isPaused = true
+  }
+
+  function play () {
+    state.isPaused = false
+
+  }
+
   emitter.on('DOMContentLoaded', DOMContentLoaded)
   emitter.on('shiftUp', shiftUp)
   emitter.on('shiftDown', shiftDown)
   emitter.on('play', play)
   emitter.on('pause', pause)
+  emitter.on('handleSlideEnter', handleSlideEnter)
+  emitter.on('handleSlideExit', handleSlideExit)
 
   function shiftUp () {
     state.latch = true
@@ -82,21 +93,25 @@ function store (state, emitter) {
     }
   }
 
-  function pause () {
-    state.isPaused = true
+  function handleSlideEnter() {
+    pause()
     emitter.emit('render')
   }
 
-  function play () {
-    state.isPaused = false
+  function handleSlideExit() {
+    play()
     emitter.emit('render')
   }
 
   function DOMContentLoaded () {
     window.setInterval(() => loop(), 500)
-    state.isLoading = false
-    emitter.emit('render')
+    delay(() => {
+      emitter.emit('render')
+      state.isLoading = false
+    }, 500)
   }
+
+  
 }
 
 module.exports = store

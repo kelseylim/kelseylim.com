@@ -13,10 +13,17 @@ function view (state, emit) {
 
   const slides = state.sections.map(key => key === 'PROJECTS' ? projects(state, emit) : about(state, emit))
   const classNames = state.classNames.join(' ')
+  const loadClassNames = state.isLoading ? 'loadingOn' : 'loadingOff'
+
   return html`
-    <div id="scrollContainer" class=${classNames} onwheel=${handleScroll}>
-      ${slides}
-    </div>
+    <body>
+      <div class='overlay ${loadClassNames}'></div>
+      <h1 id='top'>KELSEY LIM</h1>
+      <div id="scrollContainer" class=${classNames} onwheel=${handleScroll}>
+        ${slides}
+      </div>
+      <h1 id='bottom'>KELSEY LIM</h1>
+    </body>
   `
 
   function handleScroll(event) {

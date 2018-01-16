@@ -13,7 +13,7 @@ const projectList = require('../routes/projects')
 function projects (state, emit) {
   const projectListDOM = projectList.map((p, i) => {
     const className = i === state.loopIndex ? 'show' : 'hide'
-    return slide(p, className, emit)
+    return slide(p, className, state, emit)
   })
   return html`
     <section id='projects'>
@@ -37,27 +37,29 @@ function about (state, emit) {
   `
 }
 
-function slide (project, className, emit) {
+function slide (project, className, state, emit) {
+  const captionContainerClass = state.isPaused ? 'showCaption caption' : 'hideCaption caption'
   return html`
     <span class='slide ${className}'>
       <div class='slide-wrapper'>
-        <img class='slide-img' onmouseenter=${handlePause} onmouseleave=${handlePlay} src='assets/images/${project.src}' />
-        ${ makeMarkdown(project.cap) }
+        <img class='slide-img' onmouseenter=${handleSlideEnter} onmouseleave=${handleSlideExit} src='assets/images/${project.src}' />
+        <div class=${captionContainerClass}>${ makeMarkdown(project.cap) }</div>
       </div>
     </span>
   `
-  function handlePause () {
-    emit('pause')
+
+  function handleSlideEnter () {
+    emit('handleSlideEnter')
   }
 
-  function handlePlay () {
-    emit('play')
+  function handleSlideExit() {
+    emit('handleSlideExit')
   }
 }
 
 function makeMarkdown (md) {
   let el = document.createElement('div')
-  el.className = 'caption'
+  el.className = 'innerCaption'
   el.innerHTML = marked(md, { renderer:renderer })
   return el
 }

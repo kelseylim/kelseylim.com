@@ -197,6 +197,16 @@ section{
   visibility: hidden;
 }
 
+.showCaption {
+  opacity: 1;
+  transition: opacity 250ms;
+}
+
+.hideCaption {
+  opacity: 0;
+  transition: opacity 250ms;
+}
+
 .overlay {
   width: 100vw;
   height: 100vh;
@@ -209,6 +219,7 @@ section{
   pointer-events: none;
   transition: opacity 400ms;
   opacity: 1;
+  z-index: 999;
 }
 
 .loadingOn {
@@ -218,4 +229,11 @@ section{
 .loadingOff {
   opacity: 0;
   z-index: 999;
+}
+
+#noMatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }

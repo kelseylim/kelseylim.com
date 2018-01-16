@@ -8,13 +8,8 @@ module.exports = wrapper(view)
 function view (state, emit) {
   if (state.title !== TITLE) emit(state.events.DOMTITLECHANGE, TITLE)
   return html`
-    <div class="sans-serif">
-      <h1 class="f-headline pa3 pa4-ns">
-        404 - route not found
-      </h1>
-      <a href="/" class="link black underline">
-        Back to main
-      </a>
+    <div id='noMatch'>
+      <h1>No Route Found</h1>
     </div>
   `
 }
