@@ -39,7 +39,7 @@ function about (state, emit) {
 
 function slide (project, className, state, emit) {
   const captionContainerClass = state.isPaused ? 'showCaption caption' : 'hideCaption caption'
-  const imageURL = 'assets/images/' + project.src
+  const imageURL = 'assets/' + project.src
   return html`
     <span class='slide ${className}'>
       <div class='slide-wrapper'>
