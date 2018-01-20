@@ -13,7 +13,8 @@
     "watch-css": "npm run build-css && node-sass styles/ -o styles/ --watch --recursive",
     "test": "standard && npm run test-deps",
     "test-deps": "dependency-check . && dependency-check . --extra --no-dev -i tachyons",
-    "deploy": "yarn build && gh-pages -d dist"
+    "deploy": "yarn build && gh-pages -d dist",
+    "prototype": "yarn build && cd dist && now --public && cd .."
   },
   "dependencies": {
     "babel-register": "^6.26.0",
