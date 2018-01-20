@@ -2,6 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
+  font-weight: 400;
   font-size: 1rem;
   background-color: black;
   color: white;
@@ -22,12 +23,14 @@ h1 {
   width: 100%;
   text-align: center;
   z-index: 999; }
-  h1#top {
-    top: 0.5vw;
-    transform: translateY(-5vw); }
-  h1#bottom {
-    bottom: 0;
-    transform: translateY(5vw); }
+
+h1#top {
+  top: 0.2vw;
+  transform: translateY(-5vw); }
+
+h1#bottom {
+  bottom: -0.2vw;
+  transform: translateY(5vw); }
 
 #scrollContainer {
   position: fixed;
@@ -74,16 +77,18 @@ section {
   width: 100%;
   font-size: .75rem;
   line-height: 1rem;
-  letter-spacing: 0.045rem;
+  letter-spacing: 0rem;
   transform: translateY(100%);
   display: block; }
-  @media (min-width: 760px) {
-    .caption {
-      font-size: 1rem;
-      line-height: 1.25rem;
-      letter-spacing: 0.055rem; } }
-  .caption a {
-    text-decoration: underline; }
+
+@media (min-width: 760px) {
+  .caption {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    letter-spacing: 0rem; } }
+
+.caption a {
+  text-decoration: underline; }
 
 .slide-img {
   max-height: 70vh;
@@ -103,35 +108,45 @@ section {
   left: 0; }
 
 .about-content {
-  max-width: 1200px;
+  max-width: 1100px;
   text-align: center;
   padding: 0 2.5rem 0 2.5rem;
   font-size: 1.5rem;
   line-height: 1.75rem; }
-  @media (min-width: 760px) {
-    .about-content {
-      font-size: 2.5rem;
-      line-height: 3.5rem; } }
+
+@media (min-width: 760px) {
+  .about-content {
+    font-size: 2.5rem;
+    line-height: 3.5rem; } }
 
 .info, .copyright {
   letter-spacing: 0.115rem;
-  font-size: 1.2rem; }
-  .info a, .copyright a {
-    text-decoration: none; }
-  @media (min-width: 760px) {
-    .info, .copyright {
-      font-size: 1.6rem; } }
+  font-size: 1.2rem;
+  margin-top: 0px;
+  margin-bottom: 0px; }
+
+.info a, .copyright a {
+  text-decoration: none; }
+
+@media (min-width: 760px) {
+  .info, .copyright {
+    font-size: 1.6rem; } }
 
 .info {
-  padding-top: 2rem;
+  padding-top: 0rem;
   padding-bottom: .25rem; }
-  @media (min-width: 760px) {
-    .info {
-      padding-top: 4rem; } }
+
+@media (min-width: 760px) {
+  .info {
+    padding-top: 0rem; } }
 
 .copyright {
   padding-bottom: 0;
   opacity: 0.2; }
+
+.about-contact {
+  padding-top: 20px;
+  padding-bottom: 40px; }
 
 .pauseOnHover {
   z-index: 999; }

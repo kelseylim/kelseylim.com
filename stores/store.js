@@ -1,6 +1,8 @@
 const { delay } = require('lodash')
 const projectList = require('../routes/projects')
 
+const slideTime = 500
+
 function store (state, emitter) {
   state.sections = ['ABOUT', 'PROJECTS', 'ABOUT']
   state.classNames = [''],
@@ -104,7 +106,7 @@ function store (state, emitter) {
   }
 
   function DOMContentLoaded () {
-    window.setInterval(() => loop(), 500)
+    window.setInterval(() => loop(), slideTime)
     delay(() => {
       emitter.emit('render')
       state.isLoading = false
