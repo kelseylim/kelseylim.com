@@ -34,14 +34,17 @@ function home (state, emit) {
   `
 
   function handleTouchMove(event) {
+    event.preventDefault()
     emit('handleTouchMove', event)
   }
 
   function handleTouchStart(event) {
+    event.preventDefault()
     emit('handleTouchStart', event)
   }
 
   function handleScroll(event) {
+    event.preventDefault()
     emit('handleScroll', event)
   }
 

@@ -1,9 +1,10 @@
-const { delay } = require('lodash')
 const projectList = require('../routes/projects')
 
 const scrollThreshold = 30
 const sectionDelay = 1000
 const debounceDelay = 100
+const slideDuration = 500
+const loadDelay = 500
 
 function store (state, emitter) {
   state.sections = ['ABOUT', 'PROJECTS', 'ABOUT']
@@ -69,12 +70,12 @@ function store (state, emitter) {
     state.classNames = ['moveUp']
     state.currentSection = state.sections[2]
     emitter.emit('render')
-    delay(() => {
+    window.setTimeout(() => {
       state.sections = dropFirst(state.sections)
       state.sections = addAtLast(state.sections, state.sections[0])
       state.classNames = ['reset']
       emitter.emit('render')
-      delay(() => state.latch = false, debounceDelay)
+      window.setTimeout(() => state.latch = false, debounceDelay)
     }, sectionDelay)
   }
 
@@ -83,12 +84,12 @@ function store (state, emitter) {
     state.classNames = ['moveDown']
     state.currentSection = state.sections[0]
     emitter.emit('render')
-    delay(() => {
+    window.setTimeout(() => {
       state.sections = dropLast(state.sections)
       state.sections = addAtFirst(state.sections, state.sections[1])
       state.classNames = ['reset']
       emitter.emit('render')
-      delay(() => state.latch = false, debounceDelay)
+      window.setTimeout(() => state.latch = false, debounceDelay)
     }, sectionDelay)
   }
 
@@ -107,20 +108,17 @@ function store (state, emitter) {
 
 
   function handleTouchMove(event) {
-    event.preventDefault()
     const touch = event.touches[0] || event.changedTouches[0]
     const offset = touch.pageY - state.touchOriginY
     scrollDeltaGate(state.latch, offset, scrollThreshold)
   }
 
   function handleTouchStart(event) {
-    event.preventDefault()
     const touch = event.touches[0] || event.changedTouches[0]
     state.touchOriginY = touch.pageY
   }
 
   function handleScroll(event) {
-    event.preventDefault()
     scrollDeltaGate(state.latch, event.wheelDeltaY, scrollThreshold)
   }
 
@@ -135,11 +133,11 @@ function store (state, emitter) {
   }
 
   function DOMContentLoaded () {
-    window.setInterval(() => loop(), 500)
-    delay(() => {
+    window.setInterval(() => loop(), slideDuration)
+    window.setTimeout(() => {
       emitter.emit('render')
       state.isLoading = false
-    }, 500)
+    }, loadDelay)
   }
 
 }

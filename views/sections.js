@@ -60,19 +60,23 @@ function image(src, emit) {
       ontouchend=${handleSlideTouchEnd}
       src='${src}' />
   `
-  function handleSlideTouchStart () {
+  function handleSlideTouchStart (event) {
+    event.preventDefault()
     emit('handleSlideEnter')
   }
 
-  function handleSlideTouchEnd () {
+  function handleSlideTouchEnd (event) {
+    event.preventDefault()
     emit('handleSlideExit')
   }
 
-  function handleSlideEnter () {
+  function handleSlideEnter (event) {
+    event.preventDefault()
     emit('handleSlideEnter')
   }
 
-  function handleSlideExit() {
+  function handleSlideExit(event) {
+    event.preventDefault()
     emit('handleSlideExit')
   }
 }
