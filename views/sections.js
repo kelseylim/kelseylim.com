@@ -3,7 +3,7 @@ const marked = require('marked')
 const renderer = new marked.Renderer()
 
 renderer.link = function( href, title, text ) {
-  return '<a target="_blank" href="'+ href +'" title="' + title + '">' + text + '</a>';
+  return '<a target="_blank" href="'+ href +'" title="' + title + '">' + text + '</a>'
 }
 
 const raw = require('bel/raw')
@@ -45,29 +45,42 @@ function slide (project, className, state, emit) {
   return html`
     <span class='slide ${className}'>
       <div class='slide-wrapper'>
-        ${image(imageURL, handleSlideEnter, handleSlideExit )}
+        ${image(imageURL, emit)}
         <div class=${captionContainerClass}>${ makeMarkdown(project.cap) }</div>
       </div>
     </span>
   `
-
-  function handleSlideEnter () {
-    emit('handleSlideEnter')
-  }
-
-  function handleSlideExit() {
-    emit('handleSlideExit')
-  }
 }
 
-function image(src, handleSlideEnter, handleSlideExit) {
+function image(src, emit) {
   return html`
     <img
       class='slide-img'
       onmouseenter=${handleSlideEnter}
       onmouseleave=${handleSlideExit}
+      ontouchstart=${handleSlideTouchStart}
+      ontouchend=${handleSlideTouchEnd}
       src='${src}' />
   `
+  function handleSlideTouchStart (event) {
+    event.preventDefault()
+    emit('handleSlideEnter')
+  }
+
+  function handleSlideTouchEnd (event) {
+    event.preventDefault()
+    emit('handleSlideExit')
+  }
+
+  function handleSlideEnter (event) {
+    event.preventDefault()
+    emit('handleSlideEnter')
+  }
+
+  function handleSlideExit(event) {
+    event.preventDefault()
+    emit('handleSlideExit')
+  }
 }
 
 function makeMarkdown (md) {
@@ -75,6 +88,7 @@ function makeMarkdown (md) {
   el.className = 'innerCaption'
   el.innerHTML = marked(md, { renderer:renderer })
   return el
+
 }
 
 module.exports = {

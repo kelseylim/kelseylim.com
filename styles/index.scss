@@ -20,6 +20,10 @@ $transitionTime: 800ms;
   @media (min-width: 1800px) { @content; }
 }
 
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -29,6 +33,7 @@ html, body {
   background-color: black;
   color: white;
   height: 100vh;
+  overflow: hidden;
 }
 
 a {
@@ -65,11 +70,13 @@ h1 {
   top: -100vh;
   width: 100vw;
   will-change: transform;
+  overflow: hidden;
 }
 
 section{
   height: 100vh;
   position: relative;
+  overflow: hidden;
 }
 
 .moveUp {
@@ -96,6 +103,7 @@ section{
   position: absolute;
   top: 0;
   left: 0;
+  pointer-events: none;
 }
 
 .slide-wrapper {
@@ -130,6 +138,7 @@ section{
   width: auto;
   height: auto;
   position: relative;
+  pointer-events: all;
 }
 
 .about-slide {

@@ -1,3 +1,6 @@
+* {
+  -webkit-overflow-scrolling: touch; }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -6,7 +9,8 @@ html, body {
   font-size: 1rem;
   background-color: black;
   color: white;
-  height: 100vh; }
+  height: 100vh;
+  overflow: hidden; }
 
 a {
   color: white;
@@ -37,11 +41,13 @@ h1#bottom {
   height: 300vh;
   top: -100vh;
   width: 100vw;
-  will-change: transform; }
+  will-change: transform;
+  overflow: hidden; }
 
 section {
   height: 100vh;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
 
 .moveUp {
   transform: translateY(-100vh);
@@ -63,7 +69,8 @@ section {
   justify-content: center;
   position: absolute;
   top: 0;
-  left: 0; }
+  left: 0;
+  pointer-events: none; }
 
 .slide-wrapper {
   position: relative;
@@ -95,7 +102,8 @@ section {
   max-width: 90vw;
   width: auto;
   height: auto;
-  position: relative; }
+  position: relative;
+  pointer-events: all; }
 
 .about-slide {
   height: 100vh;
