@@ -2,6 +2,8 @@ require('babel-register')({
   plugins: ['markdown']
 })
 
+require('viewport-units-buggyfill').init({refreshDebounceWait: 250})
+
 const css = require('sheetify')
 const choo = require('choo')
 const store = require('./stores/store')

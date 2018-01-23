@@ -18,12 +18,14 @@
   },
   "dependencies": {
     "babel-register": "^6.26.0",
+    "bel": "^5.1.5",
     "choo": "^6.6.0",
     "choo-service-worker": "^2.3.1",
     "classnames": "^2.2.5",
     "hammerjs": "^2.0.8",
     "marked": "^0.3.12",
-    "npm-run-all": "^4.1.2"
+    "npm-run-all": "^4.1.2",
+    "viewport-units-buggyfill": "^0.6.2"
   },
   "devDependencies": {
     "babel-plugin-markdown": "^0.3.0",

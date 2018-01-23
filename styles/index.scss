@@ -95,7 +95,7 @@ section{
 }
 
 .slide {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -104,12 +104,13 @@ section{
   top: 0;
   left: 0;
   pointer-events: none;
+  visibility: hidden;
 }
 
 .slide-wrapper {
   position: relative;
   max-width: 90vw;
-  max-height: 70vh;
+  max-height: 70%;
 }
 
 .caption {
@@ -122,6 +123,8 @@ section{
   letter-spacing: 0rem;
   transform: translateY(100%);
   display: block;
+  transition: opacity 300ms;
+  opacity: 0;
   @include for-medium-up {
     font-size: 1rem;
     line-height: 1.25rem;
@@ -142,7 +145,7 @@ section{
 }
 
 .about-slide {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -205,24 +208,24 @@ section{
   position: relative;
   border: 1px solid blue;
 }
+//
+// .show {
+//   visibility: visible;
+// }
+//
+// .hide {
+//   visibility: hidden;
+// }
 
-.show {
-  visibility: visible;
-}
-
-.hide {
-  visibility: hidden;
-}
-
-.showCaption {
-  opacity: 1;
-  transition: opacity 250ms;
-}
-
-.hideCaption {
-  opacity: 0;
-  transition: opacity 250ms;
-}
+// .showCaption {
+//   opacity: 1;
+//   transition: opacity 250ms;
+// }
+//
+// .hideCaption {
+//   opacity: 0;
+//   transition: opacity 250ms;
+// }
 
 .overlay {
   width: 100vw;

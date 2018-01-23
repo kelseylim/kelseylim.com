@@ -1,3 +1,8 @@
+const marked = require('marked')
+const bel = require('bel')
+const raw = require('bel/raw')
+
+
 const projectList = require('../routes/projects')
 
 const scrollThreshold = 30
@@ -6,7 +11,13 @@ const debounceDelay = 100
 const slideDuration = 500
 const loadDelay = 500
 
+const renderer = new marked.Renderer()
+renderer.link = function( href, title, text ) {
+  return '<a target="_blank" href="'+ href +'" title="' + title + '">' + text + '</a>'
+}
+
 function store (state, emitter) {
+  state.projects = []
   state.sections = ['ABOUT', 'PROJECTS', 'ABOUT']
   state.classNames = [''],
   state.latch = false
@@ -95,14 +106,12 @@ function store (state, emitter) {
 
   function loop () {
     if (state.currentSection === 'PROJECTS' && !state.isPaused) {
-      window.requestAnimationFrame(() => {
         if (state.loopIndex < state.projectListLength - 1) {
           state.loopIndex = state.loopIndex + 1
         } else {
           state.loopIndex = 0
         }
         emitter.emit('render')
-      })
     }
   }
 
@@ -132,12 +141,49 @@ function store (state, emitter) {
     emitter.emit('render')
   }
 
+  function preProcessor(projects) {
+    return projects.map((p, i)=> {
+      return {
+          src: p.src,
+          cap: parseMarkdown(p.cap, i),
+        }
+      })
+  }
+
+  function parseMarkdown (md, i) {
+    const html = marked(md, { renderer:renderer })
+    return bel`
+      <div id='innerCap-${i}' class='innerCaption'>
+        ${raw(html)}
+      </section>
+    `
+  }
+
   function DOMContentLoaded () {
-    window.setInterval(() => loop(), slideDuration)
+    interval(() => loop(), slideDuration)
+    state.projects = preProcessor(projectList)
     window.setTimeout(() => {
-      emitter.emit('render')
       state.isLoading = false
+      emitter.emit('render')
     }, loadDelay)
+  }
+
+  function interval(func, wait, times){
+    var interv = function(w, t){
+        return function(){
+          if(typeof t === "undefined" || t-- > 0){
+              setTimeout(interv, w);
+              try {
+                  func.call(null);
+              }
+              catch(e) {
+                  t = 0;
+                  throw e.toString();
+              }
+          }
+        };
+    }(wait, times);
+    setTimeout(interv, wait)
   }
 
 }

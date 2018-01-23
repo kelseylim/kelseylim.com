@@ -1,20 +1,12 @@
 const html = require('choo/html')
-const marked = require('marked')
-const renderer = new marked.Renderer()
-
-renderer.link = function( href, title, text ) {
-  return '<a target="_blank" href="'+ href +'" title="' + title + '">' + text + '</a>'
-}
-
-const raw = require('bel/raw')
-const projectList = require('../routes/projects')
 // const bio = markdown.require('../routes/bio.md')
 
 function projects (state, emit) {
-  const projectListDOM = projectList.map((p, i) => {
-    const className = i === state.loopIndex ? 'show' : 'hide'
-    return slide(p, className, state, emit)
+  const projectListDOM = state.projects.map((p, i) => {
+    const style = i === state.loopIndex ? 'visibility: visible !important;' : null
+    return slide(p, style, state, emit, i)
   })
+
   return html`
     <section id='projects'>
       ${ projectListDOM }
@@ -39,22 +31,24 @@ function about (state, emit) {
   `
 }
 
-function slide (project, className, state, emit) {
-  const captionContainerClass = state.isPaused ? 'showCaption caption' : 'hideCaption caption'
+function slide (project, style, state, emit, index) {
   const imageURL = 'assets/' + project.src
+  const captionStyle = state.isPaused ? 'opacity: 1 !important;' : null
+
   return html`
-    <span class='slide ${className}'>
+    <span id='slide-${index}' class='slide' style=${style}>
       <div class='slide-wrapper'>
-        ${image(imageURL, emit)}
-        <div class=${captionContainerClass}>${ makeMarkdown(project.cap) }</div>
+        ${image(imageURL, emit, index)}
+        <div id='caption-${index}' style=${captionStyle} class='caption'>${ project.cap }</div>
       </div>
     </span>
   `
 }
 
-function image(src, emit) {
+function image(src, emit, index) {
   return html`
     <img
+      id='img-${index}'
       class='slide-img'
       onmouseenter=${handleSlideEnter}
       onmouseleave=${handleSlideExit}
@@ -62,6 +56,7 @@ function image(src, emit) {
       ontouchend=${handleSlideTouchEnd}
       src='${src}' />
   `
+
   function handleSlideTouchStart (event) {
     event.preventDefault()
     emit('handleSlideEnter')
@@ -81,14 +76,6 @@ function image(src, emit) {
     event.preventDefault()
     emit('handleSlideExit')
   }
-}
-
-function makeMarkdown (md) {
-  let el = document.createElement('div')
-  el.className = 'innerCaption'
-  el.innerHTML = marked(md, { renderer:renderer })
-  return el
-
 }
 
 module.exports = {
