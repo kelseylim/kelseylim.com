@@ -1,22 +1,22 @@
 const html = require('choo/html')
 // const bio = markdown.require('../routes/bio.md')
 
-function projects (state, emit) {
+function projects (state, emit, index) {
   const projectListDOM = state.projects.map((p, i) => {
-    const style = i === state.loopIndex ? 'visibility: visible !important;' : null
+    const style = i === state.loopIndex ? 'visibility: visible !important;' : ''
     return slide(p, style, state, emit, i)
   })
 
   return html`
-    <section id='projects'>
+    <section id='projects-${index}'>
       ${ projectListDOM }
     </section>
   `
 }
 
-function about (state, emit) {
+function about (state, emit, index) {
   return html`
-    <section id='about'>
+    <section id='about-${index}'>
       <span class='about-slide'>
         <div class='about-content'>
           <p>Kelsey Lim is an independent designer and art director based in NYC. She makes books, websites, packaging, illustrations, brand identities, apps, and other things. Select clients include Condé Nast, Google, Refinery29, and Man Repeller.</p>
@@ -33,22 +33,20 @@ function about (state, emit) {
 
 function slide (project, style, state, emit, index) {
   const imageURL = 'assets/' + project.src
-  const captionStyle = state.isPaused ? 'opacity: 1 !important;' : null
-
+  const captionStyle = state.isPaused ? 'opacity: 1 !important;' : ''
   return html`
     <span id='slide-${index}' class='slide' style=${style}>
       <div class='slide-wrapper'>
         ${image(imageURL, emit, index)}
-        <div id='caption-${index}' style=${captionStyle} class='caption'>${ project.cap }</div>
+        <div style=${captionStyle} class='caption'>${ project.cap }</div>
       </div>
     </span>
   `
 }
 
-function image(src, emit, index) {
+function image(src, emit) {
   return html`
     <img
-      id='img-${index}'
       class='slide-img'
       onmouseenter=${handleSlideEnter}
       onmouseleave=${handleSlideExit}

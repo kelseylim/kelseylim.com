@@ -3,16 +3,16 @@ const Hammer = require('hammerjs')
 const { projects, about } = require('./sections')
 
 
-const name = 'KELSEY LIM'
+const NAME = 'KELSEY LIM'
 // hi kelsey
 
 function home (state, emit) {
   if (state.currentSection === 'PROJECTS') emit(state.events.DOMTITLECHANGE, 'Kelsey Lim - Projects')
   if (state.currentSection === 'ABOUT') emit(state.events.DOMTITLECHANGE, 'Kelsey Lim - About')
 
-  const slides = state.sections.map(key => key === 'PROJECTS'
-    ? projects(state, emit)
-    : about(state, emit))
+  const sections = state.sections.map((key, i) => key === 'PROJECTS'
+    ? projects(state, emit, i)
+    : about(state, emit, i))
 
   const classNames = state.classNames.join(' ')
   const loadClassNames = state.isLoading ? 'loadingOn' : 'loadingOff'
@@ -20,16 +20,16 @@ function home (state, emit) {
   return html`
     <body>
       <div class='overlay ${loadClassNames}'></div>
-      <h1 id='top'>${name}</h1>
+      <h1 id='top'>${NAME}</h1>
       <div
         id="scrollContainer"
         class=${classNames}
         onwheel=${handleScroll}
         ontouchmove=${handleTouchMove}
         ontouchstart=${handleTouchStart}>
-          ${slides}
+          ${sections}
       </div>
-      <h1 id='bottom'>${name}</h1>
+      <h1 id='bottom'>${NAME}</h1>
     </body>
   `
 

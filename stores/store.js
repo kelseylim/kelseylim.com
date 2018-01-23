@@ -105,14 +105,17 @@ function store (state, emitter) {
   }
 
   function loop () {
-    if (state.currentSection === 'PROJECTS' && !state.isPaused) {
-        if (state.loopIndex < state.projectListLength - 1) {
-          state.loopIndex = state.loopIndex + 1
-        } else {
-          state.loopIndex = 0
-        }
-        emitter.emit('render')
-    }
+    setTimeout(() => {
+        window.requestAnimationFrame(loop)
+        if (state.currentSection === 'PROJECTS' && !state.isPaused) {
+            if (state.loopIndex < state.projectListLength - 1) {
+              state.loopIndex = state.loopIndex + 1
+            } else {
+              state.loopIndex = 0
+            }
+         emitter.emit('render')
+       }
+    }, slideDuration)
   }
 
 
@@ -160,30 +163,12 @@ function store (state, emitter) {
   }
 
   function DOMContentLoaded () {
-    interval(() => loop(), slideDuration)
+    requestAnimationFrame(() => loop())
     state.projects = preProcessor(projectList)
     window.setTimeout(() => {
       state.isLoading = false
       emitter.emit('render')
     }, loadDelay)
-  }
-
-  function interval(func, wait, times){
-    var interv = function(w, t){
-        return function(){
-          if(typeof t === "undefined" || t-- > 0){
-              setTimeout(interv, w);
-              try {
-                  func.call(null);
-              }
-              catch(e) {
-                  t = 0;
-                  throw e.toString();
-              }
-          }
-        };
-    }(wait, times);
-    setTimeout(interv, wait)
   }
 
 }
