@@ -159,7 +159,6 @@ function store (state, emitter) {
   }
 
   function DOMContentLoaded () {
-
     const promises = initialize(projectList)
     Promise.all(promises).then(projects => {
       state.projects = projects
@@ -171,7 +170,8 @@ function store (state, emitter) {
 
   function initialize(projectList) {
     return projectList.map(p => {
-      return preloadImage(p.src).then((img) => {
+      return preloadImage(p.src)
+        .then(img => {
         ++state.totalProjects
         return (
           {
@@ -180,7 +180,7 @@ function store (state, emitter) {
             cap: parseMarkdown(p.cap),
           }
         )
-      })
+      }).catch((img) => console.error('uh oh could not load img', img))
     })
   }
 

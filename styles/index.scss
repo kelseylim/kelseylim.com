@@ -74,7 +74,7 @@ h1 {
 }
 
 section {
-  height: 100vh;
+  height: calc(100vh); // fuck mobile safari
   position: relative;
   overflow: hidden;
 }

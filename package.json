@@ -14,7 +14,7 @@
     "test": "standard && npm run test-deps",
     "test-deps": "dependency-check . && dependency-check . --extra --no-dev -i tachyons",
     "deploy": "yarn build && gh-pages -d dist",
-    "prototype": "yarn build && cd dist && now --public && cd .."
+    "proto": "yarn build && cd dist && now --debug --public && cd .."
   },
   "dependencies": {
     "babel-register": "^6.26.0",
