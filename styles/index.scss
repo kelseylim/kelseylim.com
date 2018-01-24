@@ -104,7 +104,6 @@ section {
   top: 0;
   left: 0;
   pointer-events: none;
-  visibility: hidden;
 }
 
 .slide-wrapper {
@@ -196,36 +195,15 @@ section {
   padding-bottom: 40px;
 }
 
-.pauseOnHover {
-  z-index: 999;
+.showCaption {
+  opacity: 1;
+  transition: opacity 250ms;
 }
 
-.pauseElement{
-  display: block;
-  content: '';
-  width: 90vw;
-  height: 70vh;
-  position: relative;
-  border: 1px solid blue;
+.hideCaption {
+  opacity: 0;
+  transition: opacity 250ms;
 }
-//
-// .show {
-//   visibility: visible;
-// }
-//
-// .hide {
-//   visibility: hidden;
-// }
-
-// .showCaption {
-//   opacity: 1;
-//   transition: opacity 250ms;
-// }
-//
-// .hideCaption {
-//   opacity: 0;
-//   transition: opacity 250ms;
-// }
 
 .overlay {
   width: 100vw;

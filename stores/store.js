@@ -2,7 +2,6 @@ const marked = require('marked')
 const bel = require('bel')
 const raw = require('bel/raw')
 
-
 const projectList = require('../routes/projects')
 
 const scrollThreshold = 30
@@ -23,9 +22,10 @@ function store (state, emitter) {
   state.latch = false
   state.currentSection = 'PROJECTS'
   state.loopIndex = 0
-  state.projectListLength = projectList.length
+  state.totalProjects = 0
+  state.loadedImages = 0
   state.isPaused = false
-  state.isLoading = true
+  state.isLoaded = false
   state.touchOriginY = 0
 
   function dropLast(arr) {
@@ -81,12 +81,12 @@ function store (state, emitter) {
     state.classNames = ['moveUp']
     state.currentSection = state.sections[2]
     emitter.emit('render')
-    window.setTimeout(() => {
+    setTimeout(() => {
       state.sections = dropFirst(state.sections)
       state.sections = addAtLast(state.sections, state.sections[0])
       state.classNames = ['reset']
       emitter.emit('render')
-      window.setTimeout(() => state.latch = false, debounceDelay)
+      setTimeout(() => state.latch = false, debounceDelay)
     }, sectionDelay)
   }
 
@@ -95,12 +95,12 @@ function store (state, emitter) {
     state.classNames = ['moveDown']
     state.currentSection = state.sections[0]
     emitter.emit('render')
-    window.setTimeout(() => {
+    setTimeout(() => {
       state.sections = dropLast(state.sections)
       state.sections = addAtFirst(state.sections, state.sections[1])
       state.classNames = ['reset']
       emitter.emit('render')
-      window.setTimeout(() => state.latch = false, debounceDelay)
+      setTimeout(() => state.latch = false, debounceDelay)
     }, sectionDelay)
   }
 
@@ -108,11 +108,11 @@ function store (state, emitter) {
     setTimeout(() => {
         window.requestAnimationFrame(loop)
         if (state.currentSection === 'PROJECTS' && !state.isPaused) {
-            if (state.loopIndex < state.projectListLength - 1) {
-              state.loopIndex = state.loopIndex + 1
-            } else {
-              state.loopIndex = 0
-            }
+          if (state.loopIndex < state.totalProjects - 1) {
+            state.loopIndex = state.loopIndex + 1
+          } else {
+            state.loopIndex = 0
+          }
          emitter.emit('render')
        }
     }, slideDuration)
@@ -144,19 +144,38 @@ function store (state, emitter) {
     emitter.emit('render')
   }
 
-  function preProcessor(projects) {
+  function initialize(projects) {
     return projects.map((p, i)=> {
-      return {
-          src: p.src,
+      ++state.totalProjects
+      return ({
+          key: makeHash(),
+          img: loadImg(p.src),
           cap: parseMarkdown(p.cap, i),
-        }
+        })
       })
   }
 
-  function parseMarkdown (md, i) {
+  function loadImg(src) {
+    const img = new Image()
+    img.onload = imgOnLoad()
+    img.src = 'assets/' + src
+    img.className = 'slide-img'
+    return img
+  }
+
+  function imgOnLoad () {
+    ++state.loadedImages
+  }
+
+  function makeHash() {
+    return Math.random().toString(16).replace(/[^a-z]+/g, '').substr(0, 5)
+  }
+
+
+  function parseMarkdown (md, index) {
     const html = marked(md, { renderer:renderer })
     return bel`
-      <div id='innerCap-${i}' class='innerCaption'>
+      <div id='innerCap-${index}' class='innerCaption'>
         ${raw(html)}
       </section>
     `
@@ -164,13 +183,26 @@ function store (state, emitter) {
 
   function DOMContentLoaded () {
     requestAnimationFrame(() => loop())
-    state.projects = preProcessor(projectList)
-    window.setTimeout(() => {
-      state.isLoading = false
-      emitter.emit('render')
-    }, loadDelay)
-  }
 
+    const initalization = new Promise((resolve, reject) => {
+      const collection = initialize(projectList)
+      if (state.loadedImages === state.totalProjects) {
+        resolve(collection)
+      }
+      else {
+        reject(Error("It broke"))
+      }
+    })
+
+    initalization.then((collection) => {
+      state.projects = collection
+      state.isLoaded = true
+      emitter.emit('render')
+    }, (err) => {
+      console.log(err)
+    })
+
+  }
 }
 
 module.exports = store

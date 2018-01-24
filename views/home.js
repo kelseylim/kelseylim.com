@@ -2,7 +2,6 @@ const html = require('choo/html')
 const Hammer = require('hammerjs')
 const { projects, about } = require('./sections')
 
-
 const NAME = 'KELSEY LIM'
 // hi kelsey
 
@@ -15,7 +14,7 @@ function home (state, emit) {
     : about(state, emit, i))
 
   const classNames = state.classNames.join(' ')
-  const loadClassNames = state.isLoading ? 'loadingOn' : 'loadingOff'
+  const loadClassNames = state.isLoaded ? 'loadingOff' : 'loadingOn'
 
   return html`
     <body>
@@ -27,7 +26,7 @@ function home (state, emit) {
         onwheel=${handleScroll}
         ontouchmove=${handleTouchMove}
         ontouchstart=${handleTouchStart}>
-          ${sections}
+        ${sections}
       </div>
       <h1 id='bottom'>${NAME}</h1>
     </body>

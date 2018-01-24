@@ -2,14 +2,10 @@ const html = require('choo/html')
 // const bio = markdown.require('../routes/bio.md')
 
 function projects (state, emit, index) {
-  const projectListDOM = state.projects.map((p, i) => {
-    const style = i === state.loopIndex ? 'visibility: visible !important;' : ''
-    return slide(p, style, state, emit, i)
-  })
-
+  const project = state.projects[state.loopIndex]
   return html`
     <section id='projects-${index}'>
-      ${ projectListDOM }
+      ${ state.isLoaded ? slide(state, emit, project) : null }
     </section>
   `
 }
@@ -31,28 +27,21 @@ function about (state, emit, index) {
   `
 }
 
-function slide (project, style, state, emit, index) {
-  const imageURL = 'assets/' + project.src
-  const captionStyle = state.isPaused ? 'opacity: 1 !important;' : ''
+function slide (state, emit, project) {
+  const captionClasses = state.isPaused ? 'caption showCaption' : 'caption : hideCaption'
   return html`
-    <span id='slide-${index}' class='slide' style=${style}>
+    <span id='slide-${project.key}' class='slide'>
       <div class='slide-wrapper'>
-        ${image(imageURL, emit, index)}
-        <div style=${captionStyle} class='caption'>${ project.cap }</div>
+        <div
+          onmouseenter=${handleSlideEnter}
+          onmouseleave=${handleSlideExit}
+          ontouchstart=${handleSlideTouchStart}
+          ontouchend=${handleSlideTouchEnd}>
+          ${project.img}
+        </div>
+        <div class='${captionClasses}'>${ project.cap }</div>
       </div>
     </span>
-  `
-}
-
-function image(src, emit) {
-  return html`
-    <img
-      class='slide-img'
-      onmouseenter=${handleSlideEnter}
-      onmouseleave=${handleSlideExit}
-      ontouchstart=${handleSlideTouchStart}
-      ontouchend=${handleSlideTouchEnd}
-      src='${src}' />
   `
 
   function handleSlideTouchStart (event) {
