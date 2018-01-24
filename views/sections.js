@@ -1,11 +1,10 @@
 const html = require('choo/html')
-// const bio = markdown.require('../routes/bio.md')
 
 function projects (state, emit, index) {
   const project = state.projects[state.loopIndex]
   return html`
     <section id='projects-${index}'>
-      ${ state.isLoaded ? slide(state, emit, project) : null }
+      ${ slide(state, emit, project) }
     </section>
   `
 }
@@ -30,16 +29,16 @@ function about (state, emit, index) {
 function slide (state, emit, project) {
   const captionClasses = state.isPaused ? 'caption showCaption' : 'caption : hideCaption'
   return html`
-    <span id='slide-${project.key}' class='slide'>
-      <div class='slide-wrapper'>
+    <span id='singleSlide' class='slide'>
+      <div id='slide-wrapper'>
         <div
           onmouseenter=${handleSlideEnter}
           onmouseleave=${handleSlideExit}
           ontouchstart=${handleSlideTouchStart}
           ontouchend=${handleSlideTouchEnd}>
-          ${project.img}
+          ${ state.isLoaded ? project.img.cloneNode(true) : null }
         </div>
-        <div class='${captionClasses}'>${ project.cap }</div>
+        <div class='${captionClasses}'>${ state.isLoaded ? project.cap : '' }</div>
       </div>
     </span>
   `

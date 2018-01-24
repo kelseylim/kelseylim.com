@@ -1,6 +1,7 @@
 const marked = require('marked')
 const bel = require('bel')
 const raw = require('bel/raw')
+const loadImage = require('image-promise')
 
 const projectList = require('../routes/projects')
 
@@ -144,65 +145,60 @@ function store (state, emitter) {
     emitter.emit('render')
   }
 
-  function initialize(projects) {
-    return projects.map((p, i)=> {
-      ++state.totalProjects
-      return ({
-          key: makeHash(),
-          img: loadImg(p.src),
-          cap: parseMarkdown(p.cap, i),
-        })
-      })
-  }
-
-  function loadImg(src) {
-    const img = new Image()
-    img.onload = imgOnLoad()
-    img.src = 'assets/' + src
-    img.className = 'slide-img'
-    return img
-  }
-
-  function imgOnLoad () {
-    ++state.loadedImages
-  }
-
   function makeHash() {
-    return Math.random().toString(16).replace(/[^a-z]+/g, '').substr(0, 5)
+    return Math.random().toString(32).replace(/[^a-z]+/g, '').substr(0, 5)
   }
 
-
-  function parseMarkdown (md, index) {
+  function parseMarkdown (md) {
     const html = marked(md, { renderer:renderer })
     return bel`
-      <div id='innerCap-${index}' class='innerCaption'>
+      <div class='innerCaption'>
         ${raw(html)}
-      </section>
+      </div>
     `
   }
 
   function DOMContentLoaded () {
-    requestAnimationFrame(() => loop())
 
-    const initalization = new Promise((resolve, reject) => {
-      const collection = initialize(projectList)
-      if (state.loadedImages === state.totalProjects) {
-        resolve(collection)
-      }
-      else {
-        reject(Error("It broke"))
-      }
-    })
-
-    initalization.then((collection) => {
-      state.projects = collection
+    const promises = initialize(projectList)
+    Promise.all(promises).then(projects => {
+      state.projects = projects
       state.isLoaded = true
-      emitter.emit('render')
-    }, (err) => {
-      console.log(err)
+      requestAnimationFrame(() => loop())
     })
-
   }
+
+
+  function initialize(projectList) {
+    return projectList.map(p => {
+      return preloadImage(p.src).then((img) => {
+        ++state.totalProjects
+        return (
+          {
+            key: makeHash(),
+            img: img,
+            cap: parseMarkdown(p.cap),
+          }
+        )
+      })
+    })
+  }
+
+
+  function preloadImage(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image()
+      img.onload = () => {
+          resolve(img)
+      }
+      img.onerror = () => {
+          reject(img)
+      }
+      img.src = 'assets/' + src
+      img.className = 'slide-img'
+    })
+  }
+
 }
 
 module.exports = store

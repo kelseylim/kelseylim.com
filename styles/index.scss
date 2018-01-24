@@ -94,7 +94,7 @@ section {
   transition: 0;
 }
 
-.slide {
+#singleSlide {
   height: 100%;
   width: 100vw;
   display: flex;
@@ -104,9 +104,11 @@ section {
   top: 0;
   left: 0;
   pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
-.slide-wrapper {
+#slide-wrapper {
   position: relative;
   max-width: 90vw;
   max-height: 70%;
