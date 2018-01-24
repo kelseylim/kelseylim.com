@@ -1,7 +1,11 @@
 $transitionTime: 800ms;
 
-@mixin for-small-up {
+@mixin for-smol-up {
   @media (min-width: 200px) { @content; }
+}
+
+@mixin for-small-up {
+  @media (min-width: 400px) { @content; }
 }
 
 @mixin for-medium-up {
@@ -156,6 +160,8 @@ section {
   left: 0;
 }
 
+
+// hi this is where the about page font size should go
 .about-content {
   max-width: 1100px;
   text-align: center;
@@ -166,16 +172,33 @@ section {
     font-size: 2.5rem;
     line-height: 3.5rem;
   }
+  @include for-small-up {
+    font-size: 1.5rem;
+    line-height: 1.4rem;
+  }
+  @include for-smol-up {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
 }
 
 .info, .copyright {
   letter-spacing: 0.115rem;
-  font-size: 1.2rem;
+  font-size: inherit;
   margin-top: 0px;
   margin-bottom: 0px;
   a { text-decoration: none; }
   @include for-medium-up {
-    font-size: 1.6rem;
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+  }
+  @include for-small-up {
+    font-size: 1.5rem;
+    line-height: 1.4rem;
+  }
+  @include for-smol-up {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
   }
 }
 
