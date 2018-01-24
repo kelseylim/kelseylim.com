@@ -1,3 +1,8 @@
+const marked = require('marked')
+const bel = require('bel')
+const raw = require('bel/raw')
+const loadImage = require('image-promise')
+
 const projectList = require('../routes/projects')
 
 const scrollThreshold = 30
@@ -6,15 +11,22 @@ const debounceDelay = 100
 const slideDuration = 500
 const loadDelay = 500
 
+const renderer = new marked.Renderer()
+renderer.link = function( href, title, text ) {
+  return '<a target="_blank" href="'+ href +'" title="' + title + '">' + text + '</a>'
+}
+
 function store (state, emitter) {
+  state.projects = []
   state.sections = ['ABOUT', 'PROJECTS', 'ABOUT']
   state.classNames = [''],
   state.latch = false
   state.currentSection = 'PROJECTS'
   state.loopIndex = 0
-  state.projectListLength = projectList.length
+  state.totalProjects = 0
+  state.loadedImages = 0
   state.isPaused = false
-  state.isLoading = true
+  state.isLoaded = false
   state.touchOriginY = 0
 
   function dropLast(arr) {
@@ -70,12 +82,12 @@ function store (state, emitter) {
     state.classNames = ['moveUp']
     state.currentSection = state.sections[2]
     emitter.emit('render')
-    window.setTimeout(() => {
+    setTimeout(() => {
       state.sections = dropFirst(state.sections)
       state.sections = addAtLast(state.sections, state.sections[0])
       state.classNames = ['reset']
       emitter.emit('render')
-      window.setTimeout(() => state.latch = false, debounceDelay)
+      setTimeout(() => state.latch = false, debounceDelay)
     }, sectionDelay)
   }
 
@@ -84,26 +96,27 @@ function store (state, emitter) {
     state.classNames = ['moveDown']
     state.currentSection = state.sections[0]
     emitter.emit('render')
-    window.setTimeout(() => {
+    setTimeout(() => {
       state.sections = dropLast(state.sections)
       state.sections = addAtFirst(state.sections, state.sections[1])
       state.classNames = ['reset']
       emitter.emit('render')
-      window.setTimeout(() => state.latch = false, debounceDelay)
+      setTimeout(() => state.latch = false, debounceDelay)
     }, sectionDelay)
   }
 
   function loop () {
-    if (state.currentSection === 'PROJECTS' && !state.isPaused) {
-      window.requestAnimationFrame(() => {
-        if (state.loopIndex < state.projectListLength - 1) {
-          state.loopIndex = state.loopIndex + 1
-        } else {
-          state.loopIndex = 0
-        }
-        emitter.emit('render')
-      })
-    }
+    setTimeout(() => {
+        window.requestAnimationFrame(loop)
+        if (state.currentSection === 'PROJECTS' && !state.isPaused) {
+          if (state.loopIndex < state.totalProjects - 1) {
+            state.loopIndex = state.loopIndex + 1
+          } else {
+            state.loopIndex = 0
+          }
+         emitter.emit('render')
+       }
+    }, slideDuration)
   }
 
 
@@ -132,12 +145,58 @@ function store (state, emitter) {
     emitter.emit('render')
   }
 
+  function makeHash() {
+    return Math.random().toString(32).replace(/[^a-z]+/g, '').substr(0, 5)
+  }
+
+  function parseMarkdown (md) {
+    const html = marked(md, { renderer:renderer })
+    return bel`
+      <div class='innerCaption'>
+        ${raw(html)}
+      </div>
+    `
+  }
+
   function DOMContentLoaded () {
-    window.setInterval(() => loop(), slideDuration)
-    window.setTimeout(() => {
-      emitter.emit('render')
-      state.isLoading = false
-    }, loadDelay)
+    const promises = initialize(projectList)
+    Promise.all(promises).then(projects => {
+      state.projects = projects
+      state.isLoaded = true
+      requestAnimationFrame(() => loop())
+    })
+  }
+
+
+  function initialize(projectList) {
+    return projectList.map(p => {
+      return preloadImage(p.src)
+        .then(img => {
+        ++state.totalProjects
+        return (
+          {
+            key: makeHash(),
+            img: img,
+            cap: parseMarkdown(p.cap),
+          }
+        )
+      }).catch((img) => console.error('uh oh could not load img', img))
+    })
+  }
+
+
+  function preloadImage(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image()
+      img.onload = () => {
+          resolve(img)
+      }
+      img.onerror = () => {
+          reject(img)
+      }
+      img.src = 'assets/' + src
+      img.className = 'slide-img'
+    })
   }
 
 }
