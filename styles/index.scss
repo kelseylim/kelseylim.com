@@ -1,7 +1,11 @@
 $transitionTime: 800ms;
 
-@mixin for-small-up {
+@mixin for-smol-up {
   @media (min-width: 200px) { @content; }
+}
+
+@mixin for-small-up {
+  @media (min-width: 400px) { @content; }
 }
 
 @mixin for-medium-up {
@@ -72,8 +76,8 @@ h1 {
   overflow: hidden;
 }
 
-section{
-  height: 100vh;
+section {
+  height: calc(100vh); // fuck mobile safari
   position: relative;
   overflow: hidden;
 }
@@ -93,8 +97,8 @@ section{
   transition: 0;
 }
 
-.slide {
-  height: 100vh;
+#singleSlide {
+  height: 100%;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -103,12 +107,14 @@ section{
   top: 0;
   left: 0;
   pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
-.slide-wrapper {
+#slide-wrapper {
   position: relative;
   max-width: 90vw;
-  max-height: 70vh;
+  max-height: 70%;
 }
 
 .caption {
@@ -121,6 +127,8 @@ section{
   letter-spacing: 0rem;
   transform: translateY(100%);
   display: block;
+  transition: opacity 300ms;
+  opacity: 0;
   @include for-medium-up {
     font-size: 1rem;
     line-height: 1.25rem;
@@ -141,7 +149,7 @@ section{
 }
 
 .about-slide {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -151,12 +159,22 @@ section{
   left: 0;
 }
 
+
+// hi this is where the about page font size should go
 .about-content {
   max-width: 1100px;
   text-align: center;
   padding: 0 2.5rem 0 2.5rem;
   font-size: 1.5rem;
   line-height: 1.75rem;
+  @include for-smol-up {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
+  @include for-small-up {
+    font-size: 1.5rem;
+    line-height: 1.4rem;
+  }
   @include for-medium-up {
     font-size: 2.5rem;
     line-height: 3.5rem;
@@ -165,12 +183,21 @@ section{
 
 .info, .copyright {
   letter-spacing: 0.115rem;
-  font-size: 1.2rem;
+  font-size: inherit;
   margin-top: 0px;
   margin-bottom: 0px;
   a { text-decoration: none; }
+  @include for-smol-up {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
+  @include for-small-up {
+    font-size: 1.5rem;
+    line-height: 1.4rem;
+  }
   @include for-medium-up {
-    font-size: 1.6rem;
+    font-size: 2.5rem;
+    line-height: 3.5rem;
   }
 }
 
@@ -190,27 +217,6 @@ section{
 .about-contact {
   padding-top: 20px;
   padding-bottom: 40px;
-}
-
-.pauseOnHover {
-  z-index: 999;
-}
-
-.pauseElement{
-  display: block;
-  content: '';
-  width: 90vw;
-  height: 70vh;
-  position: relative;
-  border: 1px solid blue;
-}
-
-.show {
-  visibility: visible;
-}
-
-.hide {
-  visibility: hidden;
 }
 
 .showCaption {

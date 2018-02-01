@@ -43,7 +43,7 @@ h1 {
   overflow: hidden; }
 
 section {
-  height: 100vh;
+  height: calc(100vh);
   position: relative;
   overflow: hidden; }
 
@@ -59,8 +59,8 @@ section {
   transform: translateY(0px);
   transition: 0; }
 
-.slide {
-  height: 100vh;
+#singleSlide {
+  height: 100%;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -68,12 +68,14 @@ section {
   position: absolute;
   top: 0;
   left: 0;
-  pointer-events: none; }
+  pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform; }
 
-.slide-wrapper {
+#slide-wrapper {
   position: relative;
   max-width: 90vw;
-  max-height: 70vh; }
+  max-height: 70%; }
 
 .caption {
   position: absolute;
@@ -84,7 +86,9 @@ section {
   line-height: 1rem;
   letter-spacing: 0rem;
   transform: translateY(100%);
-  display: block; }
+  display: block;
+  transition: opacity 300ms;
+  opacity: 0; }
   @media (min-width: 760px) {
     .caption {
       font-size: 1rem;
@@ -102,7 +106,7 @@ section {
   pointer-events: all; }
 
 .about-slide {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -117,6 +121,14 @@ section {
   padding: 0 2.5rem 0 2.5rem;
   font-size: 1.5rem;
   line-height: 1.75rem; }
+  @media (min-width: 200px) {
+    .about-content {
+      font-size: 1.25rem;
+      line-height: 1.5rem; } }
+  @media (min-width: 400px) {
+    .about-content {
+      font-size: 1.5rem;
+      line-height: 1.4rem; } }
   @media (min-width: 760px) {
     .about-content {
       font-size: 2.5rem;
@@ -124,14 +136,23 @@ section {
 
 .info, .copyright {
   letter-spacing: 0.115rem;
-  font-size: 1.2rem;
+  font-size: inherit;
   margin-top: 0px;
   margin-bottom: 0px; }
   .info a, .copyright a {
     text-decoration: none; }
+  @media (min-width: 200px) {
+    .info, .copyright {
+      font-size: 1.25rem;
+      line-height: 1.5rem; } }
+  @media (min-width: 400px) {
+    .info, .copyright {
+      font-size: 1.5rem;
+      line-height: 1.4rem; } }
   @media (min-width: 760px) {
     .info, .copyright {
-      font-size: 1.6rem; } }
+      font-size: 2.5rem;
+      line-height: 3.5rem; } }
 
 .info {
   padding-top: 0rem;
@@ -147,23 +168,6 @@ section {
 .about-contact {
   padding-top: 20px;
   padding-bottom: 40px; }
-
-.pauseOnHover {
-  z-index: 999; }
-
-.pauseElement {
-  display: block;
-  content: '';
-  width: 90vw;
-  height: 70vh;
-  position: relative;
-  border: 1px solid blue; }
-
-.show {
-  visibility: visible; }
-
-.hide {
-  visibility: hidden; }
 
 .showCaption {
   opacity: 1;
