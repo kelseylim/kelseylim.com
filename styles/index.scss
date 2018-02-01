@@ -168,17 +168,17 @@ section {
   padding: 0 2.5rem 0 2.5rem;
   font-size: 1.5rem;
   line-height: 1.75rem;
-  @include for-medium-up {
-    font-size: 2.5rem;
-    line-height: 3.5rem;
+  @include for-smol-up {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
   }
   @include for-small-up {
     font-size: 1.5rem;
     line-height: 1.4rem;
   }
-  @include for-smol-up {
-    font-size: 1.25rem;
-    line-height: 1.5rem;
+  @include for-medium-up {
+    font-size: 2.5rem;
+    line-height: 3.5rem;
   }
 }
 
@@ -188,17 +188,17 @@ section {
   margin-top: 0px;
   margin-bottom: 0px;
   a { text-decoration: none; }
-  @include for-medium-up {
-    font-size: 2.5rem;
-    line-height: 3.5rem;
+  @include for-smol-up {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
   }
   @include for-small-up {
     font-size: 1.5rem;
     line-height: 1.4rem;
   }
-  @include for-smol-up {
-    font-size: 1.25rem;
-    line-height: 1.5rem;
+  @include for-medium-up {
+    font-size: 2.5rem;
+    line-height: 3.5rem;
   }
 }
 
