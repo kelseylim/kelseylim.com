@@ -1,5 +1,8 @@
 require('babel-register')({
-  plugins: ['markdown']
+  plugins: [
+    'markdown',
+    ["transform-object-rest-spread", { "useBuiltIns": true }]
+]
 })
 
 require('viewport-units-buggyfill').init()

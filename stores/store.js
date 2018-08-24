@@ -1,17 +1,18 @@
-const marked = require('marked')
+const mar = require('marked')
+const html = require('choo/html')
+
 const bel = require('bel')
-const raw = require('bel/raw')
-const loadImage = require('image-promise')
+const raw = require('choo/html/raw')
 
-const projectList = require('../routes/projects')
+const PROJECT_LIST = require('../routes/projects')
 
-const scrollThreshold = 30
-const sectionDelay = 1000
-const debounceDelay = 100
-const slideDuration = 500
-const loadDelay = 500
+const SCROLL_THRESH = 30
+const SECTION_DELAY = 1000
+const DEBOUNCE_DELAY = 100
+const SLIDE_DUR = 500
 
-const renderer = new marked.Renderer()
+
+const renderer = new mar.Renderer()
 renderer.link = function( href, title, text ) {
   return '<a target="_blank" href="'+ href +'" title="' + title + '">' + text + '</a>'
 }
@@ -29,42 +30,59 @@ function store (state, emitter) {
   state.isLoaded = false
   state.touchOriginY = 0
 
-  function dropLast(arr) {
-    let result = [...arr]
-    result.pop()
-    return result
+  const setState = o => {
+    state = Object.assign(state, o)
+    emitter.emit('render')
   }
 
-  function dropFirst(arr) {
-    let result = [...arr]
-    result.shift()
-    return result
+  const dropLast = a => {
+    let r = [...a]
+    r.pop()
+    return r
   }
 
-  function addAtFirst(arr, newItem) {
-    let result = [...arr]
-    result.unshift(newItem)
-    return result
+  const dropFirst = a => {
+    let r = [...a]
+    r.shift()
+    return r
   }
 
-  function addAtLast(arr, newItem) {
-    return arr.concat(newItem)
+  const prepend = (a, n) => {
+    let r = [...a]
+    r.unshift(n)
+    return r
   }
 
-  function pause () {
-    state.isPaused = true
-  }
+  const concat = (a, n) => a.concat(n)
 
-  function play () {
-    state.isPaused = false
-  }
+  const pause = () => setState({isPaused:true})
 
-  function scrollDeltaGate(latch, offset, threshold) {
+  const play = () => setState({isPaused:false})
+
+  function deltaGate(latch, offset, threshold) {
     if (!latch) {
-      offset > 0 + threshold ? emitter.emit('shiftDown') : null
-      offset < 0 - threshold ? emitter.emit('shiftUp') : null
+      offset > 0 + threshold ? emitter.emit('shiftDown') : () => {}
+      offset < 0 - threshold ? emitter.emit('shiftUp') : () => {}
     }
   }
+
+  const len = a => a.length
+
+  const up = a => {
+    const b = dropFirst(a)
+    return concat(b, b[0])
+  }
+
+  const down = a => {
+    const b = dropLast(a)
+    return prepend(b, b[1])
+  }
+
+  const parseMarkdown = md => html`
+    <div class='innerCaption'>
+      ${raw(mar(md, { renderer:renderer }))}
+    </div>`
+
 
   emitter.on('DOMContentLoaded', DOMContentLoaded)
   emitter.on('shiftUp', shiftUp)
@@ -78,91 +96,81 @@ function store (state, emitter) {
   emitter.on('handleTouchStart', handleTouchStart)
 
   function shiftUp () {
-    state.latch = true
-    state.classNames = ['moveUp']
-    state.currentSection = state.sections[2]
-    emitter.emit('render')
+    setState({
+      latch: true,
+      classNames: ['moveUp'],
+      currentSection: state.sections[2]
+    })
     setTimeout(() => {
-      state.sections = dropFirst(state.sections)
-      state.sections = addAtLast(state.sections, state.sections[0])
-      state.classNames = ['reset']
-      emitter.emit('render')
-      setTimeout(() => state.latch = false, debounceDelay)
-    }, sectionDelay)
+
+      setState({
+        sections: up(state.sections),
+        classNames: ['reset']
+      })
+
+      setTimeout(() => setState({latch:false}), DEBOUNCE_DELAY)
+    }, SECTION_DELAY)
   }
 
   function shiftDown () {
-    state.latch = true
-    state.classNames = ['moveDown']
-    state.currentSection = state.sections[0]
-    emitter.emit('render')
+    setState({
+      latch: true,
+      classNames: ['moveDown'],
+      currentSection: state.sections[0]
+    })
     setTimeout(() => {
-      state.sections = dropLast(state.sections)
-      state.sections = addAtFirst(state.sections, state.sections[1])
-      state.classNames = ['reset']
-      emitter.emit('render')
-      setTimeout(() => state.latch = false, debounceDelay)
-    }, sectionDelay)
+
+      setState({
+        sections: down(state.sections),
+        classNames: ['reset']
+      })
+
+      setTimeout(() => setState({latch:false}), DEBOUNCE_DELAY)
+    }, SECTION_DELAY)
   }
 
   function loop () {
     setTimeout(() => {
+        const { currentSection, isPaused, loopIndex, totalProjects } = state
         window.requestAnimationFrame(loop)
-        if (state.currentSection === 'PROJECTS' && !state.isPaused) {
-          if (state.loopIndex < state.totalProjects - 1) {
-            state.loopIndex = state.loopIndex + 1
+        if (currentSection === 'PROJECTS' && !isPaused) {
+          if (loopIndex < totalProjects - 1) {
+            setState({loopIndex: loopIndex + 1})
           } else {
-            state.loopIndex = 0
+            setState({loopIndex: 0})
           }
-         emitter.emit('render')
        }
-    }, slideDuration)
+    }, SLIDE_DUR)
   }
 
 
-  function handleTouchMove(event) {
-    const touch = event.touches[0] || event.changedTouches[0]
+  function handleTouchMove(e) {
+    const touch = e.touches[0] || e.changedTouches[0]
     const offset = touch.pageY - state.touchOriginY
-    scrollDeltaGate(state.latch, offset, scrollThreshold)
+    deltaGate(state.latch, offset, SCROLL_THRESH)
   }
 
-  function handleTouchStart(event) {
-    const touch = event.touches[0] || event.changedTouches[0]
-    state.touchOriginY = touch.pageY
+  function handleTouchStart(e) {
+    const touch = e.touches[0] || e.changedTouches[0]
+    setState({ touchOriginY: touch.pageY })
   }
 
-  function handleScroll(event) {
-    scrollDeltaGate(state.latch, event.wheelDeltaY, scrollThreshold)
+  function handleScroll(e) {
+    deltaGate(state.latch, e.wheelDeltaY, SCROLL_THRESH)
   }
 
   function handleSlideEnter() {
     pause()
-    emitter.emit('render')
   }
 
   function handleSlideExit() {
     play()
-    emitter.emit('render')
   }
 
-  function makeHash() {
-    return Math.random().toString(32).replace(/[^a-z]+/g, '').substr(0, 5)
-  }
-
-  function parseMarkdown (md) {
-    const html = marked(md, { renderer:renderer })
-    return bel`
-      <div class='innerCaption'>
-        ${raw(html)}
-      </div>
-    `
-  }
 
   function DOMContentLoaded () {
-    const promises = initialize(projectList)
-    Promise.all(promises).then(projects => {
-      state.projects = projects
-      state.isLoaded = true
+    Promise.all(initialize(PROJECT_LIST)).then(projects => {
+      setState({ projects, isLoaded: true })
       requestAnimationFrame(() => loop())
     })
   }
@@ -172,14 +180,11 @@ function store (state, emitter) {
     return projectList.map(p => {
       return preloadImage(p.src)
         .then(img => {
-        ++state.totalProjects
-        return (
-          {
-            key: makeHash(),
-            img: img,
-            cap: parseMarkdown(p.cap),
-          }
-        )
+          setState({totalProjects: state.totalProjects + 1})
+        return {
+          img: img,
+          cap: parseMarkdown(p.cap),
+        }
       }).catch((img) => console.error('uh oh could not load img', img))
     })
   }
@@ -188,12 +193,8 @@ function store (state, emitter) {
   function preloadImage(src) {
     return new Promise((resolve, reject) => {
       const img = new Image()
-      img.onload = () => {
-          resolve(img)
-      }
-      img.onerror = () => {
-          reject(img)
-      }
+      img.onload = () => resolve(img)
+      img.onerror = () => reject(img)
       img.src = 'assets/' + src
       img.className = 'slide-img'
     })
