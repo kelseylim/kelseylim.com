@@ -27,12 +27,14 @@ h1 {
   width: 100%;
   text-align: center;
   z-index: 999; }
-  h1#top {
-    top: 0.2vw;
-    transform: translateY(-5vw); }
-  h1#bottom {
-    bottom: -0.2vw;
-    transform: translateY(5vw); }
+
+h1#top {
+  top: 0.2vw;
+  transform: translateY(-5vw); }
+
+h1#bottom {
+  bottom: -0.2vw;
+  transform: translateY(5vw); }
 
 #scrollContainer {
   position: fixed;
@@ -89,13 +91,15 @@ section {
   display: block;
   transition: opacity 300ms;
   opacity: 0; }
-  @media (min-width: 760px) {
-    .caption {
-      font-size: 1rem;
-      line-height: 1.25rem;
-      letter-spacing: 0rem; } }
-  .caption a {
-    text-decoration: underline; }
+
+@media (min-width: 760px) {
+  .caption {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    letter-spacing: 0rem; } }
+
+.caption a {
+  text-decoration: underline; }
 
 .slide-img {
   max-height: 70vh;
@@ -121,45 +125,53 @@ section {
   padding: 0 2.5rem 0 2.5rem;
   font-size: 1.5rem;
   line-height: 1.75rem; }
-  @media (min-width: 200px) {
-    .about-content {
-      font-size: 1.25rem;
-      line-height: 1.5rem; } }
-  @media (min-width: 400px) {
-    .about-content {
-      font-size: 1.5rem;
-      line-height: 1.4rem; } }
-  @media (min-width: 760px) {
-    .about-content {
-      font-size: 2.5rem;
-      line-height: 3.5rem; } }
+
+@media (min-width: 200px) {
+  .about-content {
+    font-size: 1.25rem;
+    line-height: 1.5rem; } }
+
+@media (min-width: 400px) {
+  .about-content {
+    font-size: 1.5rem;
+    line-height: 1.4rem; } }
+
+@media (min-width: 760px) {
+  .about-content {
+    font-size: 2.5rem;
+    line-height: 3.5rem; } }
 
 .info, .copyright {
   letter-spacing: 0.115rem;
   font-size: inherit;
   margin-top: 0px;
   margin-bottom: 0px; }
-  .info a, .copyright a {
-    text-decoration: none; }
-  @media (min-width: 200px) {
-    .info, .copyright {
-      font-size: 1.25rem;
-      line-height: 1.5rem; } }
-  @media (min-width: 400px) {
-    .info, .copyright {
-      font-size: 1.5rem;
-      line-height: 1.4rem; } }
-  @media (min-width: 760px) {
-    .info, .copyright {
-      font-size: 2.5rem;
-      line-height: 3.5rem; } }
+
+.info a, .copyright a {
+  text-decoration: none; }
+
+@media (min-width: 200px) {
+  .info, .copyright {
+    font-size: 1.25rem;
+    line-height: 1.5rem; } }
+
+@media (min-width: 400px) {
+  .info, .copyright {
+    font-size: 1.5rem;
+    line-height: 1.4rem; } }
+
+@media (min-width: 760px) {
+  .info, .copyright {
+    font-size: 2.5rem;
+    line-height: 3.5rem; } }
 
 .info {
   padding-top: 0rem;
   padding-bottom: .25rem; }
-  @media (min-width: 760px) {
-    .info {
-      padding-top: 0rem; } }
+
+@media (min-width: 760px) {
+  .info {
+    padding-top: 0rem; } }
 
 .copyright {
   padding-bottom: 0;

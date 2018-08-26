@@ -1,35 +1,79 @@
 const projects = [
   {
-    src: 'kelseylim-degreeproject-01.jpg',
+    src: 'KelseyLim-DegreeProject-01.jpg',
     cap: 'RISD Graphic Design Degree Project Compendium.',
   },
   {
-    src: 'kelseylim-degreeproject-02.jpg',
+    src: 'KelseyLim-DegreeProject-02.jpg',
     cap: 'RISD Graphic Design Degree Project Compendium.',
   },
   {
-    src: 'kelseylim-degreeproject-03.jpg',
+    src: 'KelseyLim-DegreeProject-03.jpg',
     cap: 'RISD Graphic Design Degree Project Compendium.',
   },
   {
-    src: 'kelseylim-degreeproject-04.jpg',
+    src: 'KelseyLim-DegreeProject-04.jpg',
     cap: 'RISD Graphic Design Degree Project Compendium.',
   },
   {
-    src: 'kelseylim-degreeproject-05.jpg',
+    src: 'KelseyLim-DegreeProject-05.jpg',
     cap: 'RISD Graphic Design Degree Project Compendium.',
   },
   {
-    src: 'kelseylim-degreeproject-06.jpg',
+    src: 'KelseyLim-DegreeProject-06.jpg',
     cap: 'RISD Graphic Design Degree Project Compendium.',
   },
   {
-    src: 'kelseylim-degreeproject-07.jpg',
+    src: 'KelseyLim-DegreeProject-07.jpg',
     cap: 'RISD Graphic Design Degree Project Compendium.',
   },
   {
-    src: 'kelseylim-degreeproject-08.jpg',
+    src: 'KelseyLim-DegreeProject-08.jpg',
     cap: 'RISD Graphic Design Degree Project Compendium.',
+  },
+  {
+    src: 'Kelsey-Lim-CNT-Portfolio-11.jpg',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+  },
+  {
+    src: 'Kelsey-Lim-CNT-Portfolio-10.jpg',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+  },
+  {
+    src: 'Kelsey-Lim-CNT-Portfolio-09.jpg',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+  },
+  {
+    src: 'Kelsey-Lim-CNT-Portfolio-01.jpg',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+  },
+  {
+    src: 'Kelsey-Lim-CNT-Portfolio-02.jpg',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+  },
+  {
+    src: 'Kelsey-Lim-CNT-Portfolio-03.jpg',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+  },
+  {
+    src: 'Kelsey-Lim-CNT-Portfolio-04.jpg',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+  },
+  {
+    src: 'Kelsey-Lim-CNT-Portfolio-05.jpg',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+  },
+  {
+    src: 'Kelsey-Lim-CNT-Portfolio-06.jpg',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+  },
+  {
+    src: 'Kelsey-Lim-CNT-Portfolio-07.jpg',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+  },
+  {
+    src: 'Kelsey-Lim-CNT-Portfolio-08.jpg',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
   },
   {
     src: 'Kelsey-Lim-ManRepeller-01.jpg',
@@ -48,197 +92,202 @@ const projects = [
     cap: 'Editorial Illustration, Man Repeller.',
   },
   {
-    src: 'Kelsey-Lim-ManRepeller-05.jpg',
-    cap: 'Editorial Illustration, Man Repeller.',
+    src: 'Kelsey-Lim-CathyMarshall-Portfolio-01.jpg',
+    cap: 'Visual Identity for Cathy Marshall. Photography by Cathy Marshall.',
   },
   {
-    src: 'kelsey-lim-abel-artdirection-01.jpg',
+    src: 'Kelsey-Lim-CathyMarshall-Portfolio-02.jpg',
+    cap: 'Visual Identity for Cathy Marshall. Photography by Cathy Marshall.',
+  },
+  {
+    src: 'Kelsey-Lim-CathyMarshall-Portfolio-03.jpg',
+    cap: 'Visual Identity for Cathy Marshall. Photography by Cathy Marshall.',
+  },
+  {
+    src: 'Kelsey-Lim-CathyMarshall-Portfolio-04.jpg',
+    cap: 'Visual Identity for Cathy Marshall. Photography by Cathy Marshall.',
+  },
+  {
+    src: 'Kelsey-Lim-CathyMarshall-Portfolio-05.jpg',
+    cap: 'Visual Identity for Cathy Marshall. Photography by Cathy Marshall.',
+  },
+  {
+    src: 'Kelsey-Lim-CathyMarshall-Portfolio-06.jpg',
+    cap: 'Visual Identity for Cathy Marshall. Photography by Cathy Marshall.',
+  },
+  {
+    src: 'Kelsey-Lim-CathyMarshall-Portfolio-07.jpg',
+    cap: 'Visual Identity for Cathy Marshall. Photography by Cathy Marshall.',
+  },
+  {
+    src: 'Kelsey-Lim-CathyMarshall-Portfolio-08.jpg',
+    cap: 'Visual Identity for Cathy Marshall. Photography by Cathy Marshall.',
+  },
+  {
+    src: 'Kelsey-Lim-CathyMarshall-Portfolio-09.jpg',
+    cap: 'Visual Identity for Cathy Marshall. Photography by Cathy Marshall.',
+  },
+  {
+    src: 'Kelsey-Lim-CathyMarshall-Portfolio-10.jpg',
+    cap: 'Visual Identity for Cathy Marshall. Photography by Cathy Marshall.',
+  },
+  {
+    src: 'Kelsey-Lim-Google-01.png',
+    cap: 'Select Illustrations, Think with Google.',
+  },
+  {
+    src: 'Kelsey-Lim-Google-02.png',
+    cap: 'Select Illustrations, Think with Google.',
+  },
+  {
+    src: 'Kelsey-Lim-Abel-ArtDirection-01.jpg',
     cap: 'Art Direction and Styling, Abel. Photography by Edith Young.',
   },
   {
-    src: 'kelsey-lim-abel-website.jpg',
+    src: 'Kelsey-Lim-Abel-Website.jpg',
     cap: 'Website Design, abelobjects.com. Development by Daniel Hirunrusme.',
   },
   {
-    src: 'kelsey-lim-abel-lookbook.jpg',
+    src: 'Kelsey-Lim-Abel-Lookbook.jpg',
     cap: 'Lookbook, Abel.',
   },
   {
-    src: 'kelsey-lim-abel-artdirection-02.jpg',
+    src: 'Kelsey-Lim-Abel-ArtDirection-02.jpg',
     cap: 'Art Direction and Styling, Abel. Photography by Edith Young.',
   },
   {
-    src: 'kelsey-lim-abel-packaging.jpg',
+    src: 'Kelsey-Lim-Abel-Packaging.jpg',
     cap: 'Branding and Packaging Design, Abel.',
   },
   {
-    src: 'kelsey-lim-abel-cards.jpg',
+    src: 'Kelsey-Lim-Abel-Cards.jpg',
     cap: 'Multipurpose Jewelry and Business Cards, Abel.',
   },
   {
-    src: 'kelsey-lim-google-yearinreview2015.png',
-    cap: "_Google's Most Popular Search Queries of 2015._ Illustration, Think with Google. Art Direction by Nicklesh Soni.",
-  },
-  {
-    src: 'kelsey-lim-google-01.png',
-    cap: 'Select Illustrations, Think with Google.',
-  },
-  {
-    src: 'kelsey-lim-google-02.png',
-    cap: 'Select Illustrations, Think with Google.',
-  },
-  {
-    src: 'kelseylim-strikes-01.jpg',
-    cap: 'Package Design for an imagined match company. 2014 Adobe Design Achievement Award Semifinalist.',
-  },
-  {
-    src: 'kelseylim-strikes-02.jpg',
-    cap: 'Package Design for an imagined match company. 2014 Adobe Design Achievement Award Semifinalist.',
-  },
-  {
-    src: 'kelseylim-strikes-03.jpg',
-    cap: 'Package Design for an imagined match company. 2014 Adobe Design Achievement Award Semifinalist.',
-  },
-  {
-    src: 'kelseylim-strikes-04.jpg',
-    cap: 'Package Design for an imagined match company. 2014 Adobe Design Achievement Award Semifinalist.',
-  },
-  {
-    src: 'kelseylim-nowness.jpg',
-    cap: 'App Design, NOWNESS. Coming Soon.',
-  },
-  {
-    src: 'kelseylim-totebagflowers.jpg',
+    src: 'KelseyLim-TotebagFlowers.jpg',
     cap: 'Art Direction and Prop Styling, buymytotebag.com. In collaboration with Elsa Chiao and Alexander Ford.',
   },
   {
-    src: 'kelseylim-totebag-pizza.jpg',
+    src: 'KelseyLim-Totebag-Pizza.jpg',
     cap: 'Art Direction and Prop Styling, buymytotebag.com. In collaboration with Elsa Chiao and Alexander Ford.',
   },
   {
-    src: 'kelseylim-totebaggroceries.jpg',
+    src: 'KelseyLim-TotebagGroceries.jpg',
     cap: 'Art Direction and Prop Styling, buymytotebag.com. In collaboration with Elsa Chiao and Alexander Ford.',
   },
   {
-    src: 'kelsey-lim-totebag.jpg',
+    src: 'KelseyLim-Totebag.jpg',
     cap: 'Website Design, buymytotebag.com.',
   },
   {
-    src: 'kelsey-lim-gsapp-portfolio-01.jpg',
+    src: 'Kelsey-Lim-GSAPP-Portfolio-01.jpg',
     cap: 'Set of 5 Books, Columbia GSAPP Portfolio of Charles Vincent Thornton.',
   },
   {
-    src: 'kelsey-lim-gsapp-portfolio-02.jpg',
+    src: 'Kelsey-Lim-GSAPP-Portfolio-02.jpg',
     cap: 'Set of 5 Books, Columbia GSAPP Portfolio of Charles Vincent Thornton.',
   },
   {
-    src: 'kelsey-lim-gsapp-portfolio-cover1.jpg',
+    src: 'Kelsey-Lim-GSAPP-Portfolio-Cover1.jpg',
     cap: 'Set of 5 Books, Columbia GSAPP Portfolio of Charles Vincent Thornton.',
   },
   {
-    src: 'kelsey-lim-gsapp-portfolio-cover2.jpg',
+    src: 'Kelsey-Lim-GSAPP-Portfolio-Cover2.jpg',
     cap: 'Set of 5 Books, Columbia GSAPP Portfolio of Charles Vincent Thornton.',
   },
   {
-    src: 'kelsey-lim-gsapp-portfolio-cover3.jpg',
+    src: 'Kelsey-Lim-GSAPP-Portfolio-Cover3.jpg',
     cap: 'Set of 5 Books, Columbia GSAPP Portfolio of Charles Vincent Thornton.',
   },
   {
-    src: 'kelsey-lim-gsapp-portfolio-cover4.jpg',
+    src: 'Kelsey-Lim-GSAPP-Portfolio-Cover4.jpg',
     cap: 'Set of 5 Books, Columbia GSAPP Portfolio of Charles Vincent Thornton.',
   },
   {
-    src: 'kelsey-lim-gsapp-portfolio-cover5.jpg',
+    src: 'Kelsey-Lim-GSAPP-Portfolio-Cover5.jpg',
     cap: 'Set of 5 Books, Columbia GSAPP Portfolio of Charles Vincent Thornton.',
   },
   {
-    src: 'kelsey-lim-gsapp-portfolio-cover0.jpg',
+    src: 'Kelsey-Lim-GSAPP-Portfolio-Cover6.jpg',
     cap: 'Set of 5 Books, Columbia GSAPP Portfolio of Charles Vincent Thornton.',
   },
   {
-    src: 'kelsey-lim-gsapp-portfolio-spread1.jpg',
+    src: 'Kelsey-Lim-GSAPP-Portfolio-Spread1.jpg',
     cap: 'Set of 5 Books, Columbia GSAPP Portfolio of Charles Vincent Thornton.',
   },
   {
-    src: 'kelsey-lim-gsapp-portfolio-spread2.jpg',
+    src: 'Kelsey-Lim-GSAPP-Portfolio-Spread2.jpg',
     cap: 'Set of 5 Books, Columbia GSAPP Portfolio of Charles Vincent Thornton.',
   },
   {
-    src: 'kelsey-lim-gsapp-portfolio-spread5.jpg',
+    src: 'Kelsey-Lim-GSAPP-Portfolio-Spread5.jpg',
     cap: 'Set of 5 Books, Columbia GSAPP Portfolio of Charles Vincent Thornton.',
   },
   {
-    src: 'kelsey-lim-gsapp-portfolio-spread6.jpg',
+    src: 'Kelsey-Lim-GSAPP-Portfolio-Spread6.jpg',
     cap: 'Set of 5 Books, Columbia GSAPP Portfolio of Charles Vincent Thornton.',
   },
   {
-    src: 'kelsey-lim-refinery29-illustrations-01.jpg',
-    cap: 'Snapchat Discover Illustrations, Refinery29.',
+    src: 'Kelsey-Lim-Refinery29-Illustrations-04.jpg',
+    cap: 'Illustration for Snapchat Discover, Refinery29.',
   },
   {
-    src: 'kelsey-lim-refinery29-illustrations-02.jpg',
-    cap: 'Snapchat Discover Illustrations, Refinery29.',
+    src: 'Kelsey-Lim-Berte-Portfolio-01.png',
+    cap: 'Visual Identity, Berte.',
   },
   {
-    src: 'kelsey-lim-refinery29-illustrations-03.jpg',
-    cap: 'Snapchat Discover Illustrations, Refinery29.',
+    src: 'Kelsey-Lim-Berte-Portfolio-02.png',
+    cap: 'Visual Identity, Berte.',
   },
   {
-    src: 'kelsey-lim-refinery29-illustrations-04.jpg',
-    cap: 'Snapchat Discover Illustrations, Refinery29.',
+    src: 'Kelsey-Lim-Berte-Portfolio-03.jpg',
+    cap: 'Visual Identity and Art Direction, Berte. Photography by Alexandra Rowley.',
   },
   {
-    src: 'kelseylim-altewaisaome-02.png',
-    cap: 'Brand Identity, Altewaisaome. Coming Soon.',
+    src: 'Kelsey-Lim-Berte-Portfolio-04.jpg',
+    cap: 'Website Design, shopberte.com. Development by Daniel Hirunrusme.',
   },
   {
-    src: 'kelseylim-altewaisaome-01.jpg',
-    cap: 'Brand Identity, Altewaisaome. Coming Soon.',
+    src: 'Kelsey-Lim-Berte-Portfolio-05.jpg',
+    cap: 'Website Design, shopberte.com. Development by Daniel Hirunrusme.',
   },
   {
-    src: 'kelseylim-pleasefollowme-01.jpg',
-    cap: "Modern-day interpretation of Sophie Calle's _Suite vénitienne_, featuring excerpts by John Baudrillard.",
+    src: 'Kelsey-Lim-Berte-Portfolio-07.jpg',
+    cap: 'Website Design, shopberte.com. Development by Daniel Hirunrusme.',
   },
   {
-    src: 'kelseylim-pleasefollowme-02.jpg',
-    cap: "Modern-day interpretation of Sophie Calle's _Suite vénitienne_, featuring excerpts by John Baudrillard.",
+    src: 'Kelsey-Lim-Berte-Portfolio-07B.jpg',
+    cap: 'Website Design, shopberte.com. Development by Daniel Hirunrusme.',
   },
   {
-    src: 'kelseylim-pleasefollowme-03.jpg',
-    cap: "Modern-day interpretation of Sophie Calle's _Suite vénitienne_, featuring excerpts by John Baudrillard.",
+    src: 'Kelsey-Lim-Berte-Portfolio-08.jpg',
+    cap: 'Art Direction and Styling, Berte. Photography by Alexandra Rowley.',
   },
   {
-    src: 'kelseylim-pleasefollowme-04.jpg',
-    cap: "Modern-day interpretation of Sophie Calle's _Suite vénitienne_, featuring excerpts by John Baudrillard.",
+    src: 'Kelsey-Lim-Berte-Portfolio-09.jpg',
+    cap: 'Art Direction and Styling, Berte. Photography by Alexandra Rowley.',
   },
   {
-    src: 'kelseylim-pleasefollowme-05.jpg',
-    cap: "Modern-day interpretation of Sophie Calle's _Suite vénitienne_, featuring excerpts by John Baudrillard.",
+    src: 'Kelsey-Lim-Berte-Portfolio-10.jpg',
+    cap: 'Art Direction and Styling, Berte. Photography by Alexandra Rowley.',
   },
   {
-    src: 'kelseylim-pleasefollowme-06.jpg',
-    cap: "Modern-day interpretation of Sophie Calle's _Suite vénitienne_, featuring excerpts by John Baudrillard.",
+    src: 'Kelsey-Lim-Berte-Portfolio-11.jpg',
+    cap: 'Art Direction and Styling, Berte. Photography by Alexandra Rowley.',
   },
   {
-    src: 'kelsey-lim-famouslasttweets-02.jpg',
+    src: 'Kelsey-Lim-Berte-Portfolio-12.jpg',
+    cap: 'Art Direction and Styling, Berte. Photography by Alexandra Rowley.',
+  },
+  {
+    src: 'Kelsey-Lim-FamousLastTweets-02.jpg',
     cap: "Famous Last Tweets: the final tweets of celebrities before their death, hand sandblasted into marble.",
   },
   {
-    src: 'kelsey-lim-famouslasttweets-01.jpg',
+    src: 'Kelsey-Lim-FamousLastTweets-01.jpg',
     cap: "Famous Last Tweets: the final tweets of celebrities before their death, hand sandblasted into marble.",
   },
-  {
-    src: 'kelseylim-historyofgraphicdesign-01.jpg',
-    cap: 'A living catalog of RISD’s Graphic Design department.',
-  },
-  {
-    src: 'kelseylim-historyofgraphicdesign-02.jpg',
-    cap: 'A living catalog of RISD’s Graphic Design department.',
-  },
-  {
-    src: 'kelseylim-historyofgraphicdesign-03.jpg',
-    cap: 'A living catalog of RISD’s Graphic Design department.',
-  },
+
 
 
 

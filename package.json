@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "babel-plugin-markdown": "^0.3.0",
-    "bankai": "^9.2.0",
+    "bankai": "^9.14.0",
     "choo-devtools": "^2.1.0",
     "choo-scaffold": "^1.1.2",
     "dependency-check": "^2.9.1",
