@@ -47,6 +47,7 @@ a {
 
 h1 {
   font-size: 10vw;
+  letter-spacing: 0.8rem;
   line-height: 10vw;
   height: 10vw;
   padding: 0;
@@ -169,11 +170,11 @@ section {
   line-height: 1.75rem;
   @include for-smol-up {
     font-size: 1.25rem;
-    line-height: 1.5rem;
+    line-height: 1.85rem;
   }
   @include for-small-up {
     font-size: 1.5rem;
-    line-height: 1.4rem;
+    line-height: 1.85rem;
   }
   @include for-medium-up {
     font-size: 2.5rem;
@@ -182,22 +183,22 @@ section {
 }
 
 .info, .copyright {
-  letter-spacing: 0.115rem;
-  font-size: inherit;
+  font-size: 1.25rem;
+  letter-spacing: 0.08rem;
   margin-top: 0px;
   margin-bottom: 0px;
   a { text-decoration: none; }
   @include for-smol-up {
     font-size: 1.25rem;
-    line-height: 1.5rem;
+    line-height: 1.85rem;
   }
   @include for-small-up {
-    font-size: 1.5rem;
-    line-height: 1.4rem;
+    font-size: 1.25rem;
+    line-height: 1.85rem;
   }
   @include for-medium-up {
-    font-size: 2.5rem;
-    line-height: 3.5rem;
+    font-size: 1.25rem;
+    line-height: 1.85rem;
   }
 }
 

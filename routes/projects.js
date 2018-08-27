@@ -33,47 +33,47 @@ const projects = [
   },
   {
     src: 'Kelsey-Lim-CNT-Portfolio-11.jpg',
-    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Doo, Donica Ida, Elaine Shum, and Brooke Ellis.',
   },
   {
     src: 'Kelsey-Lim-CNT-Portfolio-10.jpg',
-    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Doo, Donica Ida, Elaine Shum, and Brooke Ellis.',
   },
   {
     src: 'Kelsey-Lim-CNT-Portfolio-09.jpg',
-    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Doo, Donica Ida, Elaine Shum, and Brooke Ellis.',
   },
   {
     src: 'Kelsey-Lim-CNT-Portfolio-01.jpg',
-    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Doo, Donica Ida, Elaine Shum, and Brooke Ellis.',
   },
   {
     src: 'Kelsey-Lim-CNT-Portfolio-02.jpg',
-    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Doo, Donica Ida, Elaine Shum, and Brooke Ellis.',
   },
   {
     src: 'Kelsey-Lim-CNT-Portfolio-03.jpg',
-    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Doo, Donica Ida, Elaine Shum, and Brooke Ellis.',
   },
   {
     src: 'Kelsey-Lim-CNT-Portfolio-04.jpg',
-    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Doo, Donica Ida, Elaine Shum, and Brooke Ellis.',
   },
   {
     src: 'Kelsey-Lim-CNT-Portfolio-05.jpg',
-    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Doo, Donica Ida, Elaine Shum, and Brooke Ellis.',
   },
   {
     src: 'Kelsey-Lim-CNT-Portfolio-06.jpg',
-    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Doo, Donica Ida, Elaine Shum, and Brooke Ellis.',
   },
   {
     src: 'Kelsey-Lim-CNT-Portfolio-07.jpg',
-    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Doo, Donica Ida, Elaine Shum, and Brooke Ellis.',
   },
   {
     src: 'Kelsey-Lim-CNT-Portfolio-08.jpg',
-    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Do, Donica Ida, Elaine Shum, and Brooke Ellis.',
+    cap: 'Condé Nast Traveler Website Redesign. With Winnie Ma, Christina Doo, Donica Ida, Elaine Shum, and Brooke Ellis.',
   },
   {
     src: 'Kelsey-Lim-ManRepeller-01.jpg',
