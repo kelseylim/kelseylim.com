@@ -66,6 +66,12 @@ h1 {
     bottom: -0.2vw;
     transform: translateY(5vw);
   }
+  @include for-smol-up {
+    letter-spacing: 0.25rem;
+  }
+  @include for-small-up {
+    letter-spacing: 0.25rem;
+  }
 }
 
 #scrollContainer {
@@ -189,11 +195,11 @@ section {
   margin-bottom: 0px;
   a { text-decoration: none; }
   @include for-smol-up {
-    font-size: 1.25rem;
+    font-size: 1.18rem;
     line-height: 1.85rem;
   }
   @include for-small-up {
-    font-size: 1.25rem;
+    font-size: 1.18rem;
     line-height: 1.85rem;
   }
   @include for-medium-up {

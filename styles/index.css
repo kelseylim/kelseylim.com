@@ -37,6 +37,14 @@ h1#bottom {
   bottom: -0.2vw;
   transform: translateY(5vw); }
 
+@media (min-width: 200px) {
+  h1 {
+    letter-spacing: 0.25rem; } }
+
+@media (min-width: 400px) {
+  h1 {
+    letter-spacing: 0.25rem; } }
+
 #scrollContainer {
   position: fixed;
   height: 300vh;
@@ -153,12 +161,12 @@ section {
 
 @media (min-width: 200px) {
   .info, .copyright {
-    font-size: 1.25rem;
+    font-size: 1.18rem;
     line-height: 1.85rem; } }
 
 @media (min-width: 400px) {
   .info, .copyright {
-    font-size: 1.25rem;
+    font-size: 1.18rem;
     line-height: 1.85rem; } }
 
 @media (min-width: 760px) {
