@@ -14,8 +14,8 @@
     "watch-css": "npm run build-css && node-sass styles/ -o styles/ --watch --recursive",
     "test": "standard && npm run test-deps",
     "test-deps": "dependency-check . && dependency-check . --extra --no-dev -i tachyons",
-    "deploy": "yarn build && gh-pages -d dist",
-    "proto": "yarn build && cd dist && now --debug --public && cd .."
+    "deploy": "npm run build && gh-pages -d dist",
+    "proto": "npm run build && cd dist && now --debug --public && cd .."
   },
   "dependencies": {
     "choo": "^6.6.0",
