@@ -14,12 +14,12 @@ function about (state, emit, index) {
     <section id='about-${index}'>
       <span class='about-slide'>
         <div class='about-content'>
-          <p>Kelsey Lim is an independent designer and art director based in NYC. She makes books, websites, packaging, illustrations, brand identities, apps, and other things. If you would like to work on a project together, please feel free to get in touch.</p>
+          <p>Kelsey Lim is an independent designer and art director based in New York City.</p>
           <div class='about-contact'>
           <p class='info'>KELSEY.S.LIM@GMAIL.COM</p>
           <p class='info'><a href="https://www.instagram.com/kelseylim/" target="_blank">IG @KELSEYLIM</a></p>
           <p class='copyright'>WEBSITE DEVELOPED BY <a href="https://gav.space/" target="_blank">GAVIN ATKINSON</a></p>
-          <p class='copyright'>© 2018 KELSEY LIM.</p>
+          <p class='copyright'>© 2019 KELSEY LIM.</p>
           </div>
         </div>
       </span>
