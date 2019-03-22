@@ -14,7 +14,7 @@ function about (state, emit, index) {
     <section id='about-${index}'>
       <span class='about-slide'>
         <div class='about-content'>
-          <p>Kelsey Lim is an independent designer and art director based in New York City.</p>
+          <p>Kelsey Lim is an independent designer and art director based in NYC. Her work is never bound by any one style and takes many forms—including brand identities, websites, packaging, and photo art direction.</p>
           <div class='about-contact'>
           <p class='info'>KELSEY.S.LIM@GMAIL.COM</p>
           <p class='info'><a href="https://www.instagram.com/kelseylim/" target="_blank">IG @KELSEYLIM</a></p>
